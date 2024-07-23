@@ -1,6 +1,14 @@
 {
-  "index": "Introduction",
-  "installation": "Installation",
-  "cli": "CLI",
-  "sections": "Sections (Segments)"
+    "index": {
+        "type": "page",
+        "title": "ConvertFast UI",
+        "display": "hidden",
+        "theme": {
+            "layout": "raw"
+        }
+    },
+    "docs": {
+        "title": "Documentation",
+        "type": "page"
+    }
 }

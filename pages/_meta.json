@@ -2,10 +2,7 @@
     "index": {
         "type": "page",
         "title": "ConvertFast UI",
-        "display": "hidden",
-        "theme": {
-            "layout": "raw"
-        }
+        "display": "hidden"
     },
     "docs": {
         "title": "Documentation",

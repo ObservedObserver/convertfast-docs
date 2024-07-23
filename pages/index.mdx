@@ -1,14 +1,56 @@
-# Hello world
-
-import { Button } from '@/components/ui/button'
-
-<Button>Click me</Button>
-
+## Welcome to the Kanaries developer platform
 ```
-import LandingPage from '@/components/home/page.tsx'
+<div className="bg-background">This is a text</div>
 
-<LandingPage />
+<div className="dark">
+<div className="bg-background">This is a text</div>
+</div>
 ```
+### Start with the basics
 
-<div className="w-12 h-12 inline-block shadow bg-zinc-900 dark:bg-white">tailwind</div>
-              <div className="w-12 h-12 inline-block shadow bg-primary">shacn</div>
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+
+<div className="grid grid-cols-2 gap-4 mt-6">
+    <Card className="flex flex-col justify-between">
+        <CardHeader>
+            <CardTitle>Graphic Walker Integration</CardTitle>
+            <CardDescription>Embeddable visual analytic component</CardDescription>
+        </CardHeader>
+        <CardFooter>
+            <Button className="w-full" asChild>
+                <Link href="/graphic-walker/overview">
+                    Get started
+                </Link>
+            </Button>
+        </CardFooter>
+    </Card>
+    <Card className="flex flex-col justify-between">
+        <CardHeader>
+            <CardTitle>vizGPT text-to-visualization API</CardTitle>
+            <CardDescription>Turn text prompts into editable visualization in graphic-walker/pygwalker</CardDescription>
+        </CardHeader>
+        <CardFooter>
+            <Button className="w-full" asChild>
+                <Link href="/viz-gpt/introduction">
+                    Get started
+                </Link>
+            </Button>
+        </CardFooter>
+    </Card>
+</div>
+
+### Resources
+
+-   [PyGWalker's Github](https://github.com/Kanaries/pygwalker)
+-   [Graphic Walker's Github](https://github.com/Kanaries/graphic-walker)
+
+

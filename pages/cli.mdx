@@ -1,0 +1,39 @@
+# CLI
+
+`convertfast-ui` offers a CLI tool to help you create a landing page with customizable sections and components. You can use the code directly by copying and pasting it into your project.
+
+## Usage
+
+### Initialization
+
+Before creating a new landing page, you need to initialize the `convertfast-ui` project configuration. Since `convertfast-ui` is based on `shadcn-ui`, ensure you have already set up `shadcn-ui` in your project. You can find more details about the `shadcn-ui` setup [here](https://ui.shadcn.com/docs/installation).
+
+To initialize the project configuration, run:
+
+```bash
+npx convertfast-ui@latest init
+```
+
+By default, `convertfast-ui` will try to detect the project settings from the current directory. If it fails to recognize the settings, it will prompt you with questions to generate a new configuration file.
+
+After the configuration is generated, you will see a `landing-pages.json` file in the root directory of your project.
+
+### Creating a New Landing Page
+
+To create a new landing page, use the following command:
+
+```bash
+npx convertfast-ui@latest page create <page-name>
+```
+
+Replace `<page-name>` with the desired name of your landing page.
+
+### Adding a New Section to a Landing Page
+
+To add a new section to an existing landing page, use the following command:
+
+```bash
+npx convertfast-ui@latest page <page-name> add <section-name>
+```
+
+Replace `<page-name>` with the name of your landing page and `<section-name>` with the name of the section you want to add.

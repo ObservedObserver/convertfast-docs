@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 const config: DocsThemeConfig = {
   logo: <span>ConvertFast UI</span>,
-  logoLink: 'https://convertfa.st',
+  logoLink: 'https://ui.convertfa.st',
   // chat: {
   //   link: 'https://convertfa.st',
   // },
@@ -16,7 +16,7 @@ const config: DocsThemeConfig = {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
     const url =
-      'https://convertfa.st' +
+      'https://ui.convertfa.st' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
  
     return (

@@ -31,7 +31,15 @@ const config: DocsThemeConfig = {
         <link rel="canonical" href={url} />
       </>
     )
-  }
+  },
+  useNextSeoProps() {
+    const { asPath } = useRouter();
+    if (asPath !== "/") {
+        return {
+          titleTemplate: "%s – ConvertFast UI"
+        };
+    }
+  },
 }
 
 export default config

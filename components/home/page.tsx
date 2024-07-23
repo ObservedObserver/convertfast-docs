@@ -3,7 +3,7 @@ import { FeatureSection } from './feature-section'
 import { CTA } from './cta'
 import { FAQ } from './faq'
 import { PricingSection } from './pricing'
-  
+
 function LandingPage() {
   return (
     <>

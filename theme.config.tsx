@@ -11,6 +11,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Convert Fast',
   },
+  darkMode: true,
   docsRepositoryBase: 'https://github.com/ObservedObserver/convertfast-ui',
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()

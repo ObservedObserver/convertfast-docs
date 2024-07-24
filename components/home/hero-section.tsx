@@ -1,5 +1,6 @@
 // import { BGShapeCircle } from "@/components/bg-shape-circle";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { FC } from "react";
 
 export const HeroSection: FC = () => {
@@ -12,11 +13,13 @@ export const HeroSection: FC = () => {
             Bootstrap your landing page with ConvertFast UI
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            Build stunning landing pages with ease and convert your customers faster than ever.
+            This is not real product, just a showcase of generated landing page. Build stunning landing pages with ease and convert your customers faster than ever.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="w-full sm:w-auto">
-              Start now
+            <Button size="lg" className="w-full sm:w-auto" asChild>
+              <Link href="/docs">
+                Start now
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
               <code className="p-1 rounded">npm install convertfast-ui</code>

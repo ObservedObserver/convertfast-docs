@@ -13,9 +13,9 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Why use ConvertFast to build landing pages?",
+    question: "This is not real product, just a showcase of generated landing page.",
     answer:
-      "ConvertFast provides a comprehensive set of tools and pre-built components specifically designed for creating high-converting landing pages. Our intuitive interface, customizable templates, and optimized code export save you time and effort while ensuring professional results.",
+      "This is not real product, just a showcase of generated landing page.",
   },
   {
     question: "Is ConvertFast open source?",

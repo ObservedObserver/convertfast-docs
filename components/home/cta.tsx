@@ -12,7 +12,7 @@ export const CTA: FC = () => {
             Ready to build your high-converting landing page?
           </h2>
           <p className="mt-6 text-xl leading-8 opacity-90 text-muted-foreground">
-            With ConvertFast, you can create stunning landing pages that turn visitors into customers. Start building for free and see the difference.
+            With ConvertFast, you can create stunning landing pages that turn visitors into customers. Start building for free and see the difference. This is not real product, just a showcase of generated landing page.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">

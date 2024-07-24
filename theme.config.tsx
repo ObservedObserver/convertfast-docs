@@ -22,6 +22,9 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/ObservedObserver/convertfast-ui'
   },
+  banner: {
+    text: <div>This page is just a showcase example of generated landing page, not real product! Example of code blocks at<a href="/docs">doc</a> </div>
+  },
   // darkMode: true,
   docsRepositoryBase: 'https://github.com/ObservedObserver/convertfast-ui',
   head: () => {

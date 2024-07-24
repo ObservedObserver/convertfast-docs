@@ -7,7 +7,7 @@ const plans = [
     name: "Starter",
     id: "plan-starter",
     href: "#",
-    price: { monthly: "$19", annually: "$190" },
+    price: { monthly: "$0", annually: "$0" },
     description: "Perfect for individual developers or small projects.",
     actionTitle: "Get started",
     features: [
@@ -22,7 +22,7 @@ const plans = [
     name: "Pro",
     id: "plan-pro",
     href: "#",
-    price: { monthly: "$49", annually: "$490" },
+    price: { monthly: "$0", annually: "$0" },
     description: "Ideal for growing businesses and agencies.",
     actionTitle: "Get started",
     features: [
@@ -38,7 +38,7 @@ const plans = [
     name: "Enterprise",
     id: "plan-enterprise",
     href: "#",
-    price: { monthly: "$99", annually: "$990" },
+    price: { monthly: "$0", annually: "$0" },
     description: "For large teams and high-volume projects.",
     actionTitle: "Contact sales",
     features: [
@@ -64,7 +64,7 @@ export function PricingSection() {
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-center">
-          ConvertFast offers flexible pricing options to suit developers and teams of all sizes. Start building stunning
+          This is not real product, just a showcase of generated landing page. ConvertFast offers flexible pricing options to suit developers and teams of all sizes. Start building stunning
           landing pages faster than ever.
         </p>
         <div className="mt-20 flow-root">

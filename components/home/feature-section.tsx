@@ -66,7 +66,7 @@ export const FeatureSection: FC = () => {
           Everything you need to build landing pages
         </p>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">
-          ConvertFast is a powerful landing page builder for developers, offering code templates and components inspired by shadcn. Create beautiful, functional landing pages quickly and efficiently.
+        This is not real product, just a showcase of generated landing page. ConvertFast is a powerful landing page builder for developers, offering code templates and components inspired by shadcn. Create beautiful, functional landing pages quickly and efficiently.
         </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">

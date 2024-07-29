@@ -33,14 +33,14 @@ const Feature: FC<FeatureProps> = ({ title, description, imageUrl, isImageLeft }
 export const FeatureSection: FC = () => {
   const features: FeatureProps[] = [
     {
-      title: "Rapid Landing Page Development",
-      description: "Build stunning landing pages in minutes with our intuitive drag-and-drop interface and pre-designed components.",
+      title: "Deploy any service in minutes",
+      description: "Stop worrying about the infrastructure and focus on building your app. Deploy your services with one click.",
       imageUrl: "https://zeabur.com/images/project.svg",
       isImageLeft: true,
     },
     {
       title: "Customizable Templates",
-      description: "Choose from a wide range of professionally designed templates and easily customize them to match your brand.",
+      description: "Start your app from templates or build your own.",
       imageUrl: "https://zeabur.com/docs/_next/image?url=%2Fdocs%2F_next%2Fstatic%2Fmedia%2Fsection-2.0ba32204.png&w=3840&q=75",
       isImageLeft: false,
     },
@@ -61,12 +61,12 @@ export const FeatureSection: FC = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
       <div className="mx-auto max-w-2xl text-center mb-16">
-        <h2 className="text-base font-semibold leading-7 text-primary">ConvertFast</h2>
+        <h2 className="text-base font-semibold leading-7 text-primary">Zeabur</h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-primary">
-          Everything you need to build landing pages
+          The PaaS of the developers, by the developers, for the developers.
         </p>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">
-          ConvertFast is a powerful landing page builder for developers, offering code templates and components inspired by shadcn. Create beautiful, functional landing pages quickly and efficiently.
+          The Infra you need to build and ship fast.
         </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">

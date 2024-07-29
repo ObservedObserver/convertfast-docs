@@ -1,4 +1,12 @@
 {
+    "index": {
+        "type": "page",
+        "title": "Examples",
+        "theme": {
+            "typesetting": "article",
+            "layout": "full"
+        }
+    },
     "graphic-walker": {
         "type": "page",
         "title": "Graphic Walker",

@@ -1,0 +1,16 @@
+{
+    "graphic-walker": {
+        "type": "page",
+        "title": "Graphic Walker",
+        "theme": {
+            "layout": "raw"
+        }
+    },
+    "zeabur": {
+        "type": "page",
+        "title": "Zeabur",
+        "theme": {
+            "layout": "raw"
+        }
+    }
+}

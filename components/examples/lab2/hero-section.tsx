@@ -10,22 +10,20 @@ export const HeroSection: FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 drop-shadow-md">
-            Scale your landing pages for programmatic SEO
+            Let AI to build your data apps
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            The landing page generator for developers and marketers. Build, deploy, and scale your landing pages with ease.
+            Focus on real world problems, let lab2 AI to build your data apps.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="w-full sm:w-auto" asChild>
-              <Link href="/docs">
-                Build now
-              </Link>
+              <Link href="https://lab2.dev">Start build</Link>
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto">
-              <code className="p-1 rounded">npx convertfast-ui@latest init</code>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+              <Link href="https://lab2.dev">Idea to App now</Link>
             </Button>
           </div>
-          <p className="mt-4 text-sm text-gray-500">Free and open-source. No credit card required.</p>
+          <p className="mt-4 text-sm text-gray-500"></p>
         </div>
 
         <img

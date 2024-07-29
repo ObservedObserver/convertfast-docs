@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 // import { BGShapeCircle } from "@/components/bg-shape-circle";
 
 export const CTA: FC = () => {
@@ -10,17 +9,17 @@ export const CTA: FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-            Ready to provides interactive visualization to your users?
+            Let AI to build data apps for analytics.
           </h2>
           <p className="mt-6 text-xl leading-8 opacity-90 text-muted-foreground">
-            With Graphic Walker, you can provides an embedded tableau alternative to your users.
+            The AI assistant of data scientists, for data scientists, by data scientists.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
-              <Link href="https://kanaries.net/graphic-walker">Get started for free</Link>
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+              Get started for free
             </Button>
-            <Button size="lg" className="w-full sm:w-auto" asChild>
-              <Link href="https://docs.kanaries.net/graphic-walker">View documentation</Link>
+            <Button size="lg" className="w-full sm:w-auto">
+              View documentation
             </Button>
           </div>
           <p className="mt-6 text-sm opacity-75 text-muted-foreground">

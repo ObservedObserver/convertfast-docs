@@ -20,5 +20,12 @@
         "theme": {
             "layout": "raw"
         }
+    },
+    "lab2": {
+        "type": "page",
+        "title": "Lab2",
+        "theme": {
+            "layout": "raw"
+        }
     }
 }

@@ -33,26 +33,26 @@ const Feature: FC<FeatureProps> = ({ title, description, imageUrl, isImageLeft }
 export const FeatureSection: FC = () => {
   const features: FeatureProps[] = [
     {
-      title: "Lightweight React Component",
-      description: "Graphic Walker offers a compact, embeddable React component, providing a streamlined alternative to Tableau for data visualization.",
+      title: "AI-Powered App Creation",
+      description: "Build data and AI apps with simple text prompts - no coding required.",
       imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
       isImageLeft: true,
     },
     {
-      title: "Cloud-Native Scalability",
-      description: "Designed for cloud environments, Graphic Walker efficiently handles large-scale data sets, ensuring smooth performance as your data grows.",
+      title: "Streamlit Integration",
+      description: "Generate Streamlit apps in minutes using AI assistance.",
       imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
       isImageLeft: false,
     },
     {
-      title: "Open-Source Flexibility",
-      description: "As an open-source solution, Graphic Walker offers full customization capabilities and community-driven improvements.",
+      title: "Focus on Solutions",
+      description: "Concentrate on real-world problems while lab2 AI handles app development.",
       imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
       isImageLeft: true,
     },
     {
-      title: "Interactive Data Exploration",
-      description: "Empower users with intuitive tools for data analysis, enabling deep insights through dynamic visualizations and interactive features.",
+      title: "Collaborative Workspace",
+      description: "Share apps instantly, gather feedback, and iterate in real-time.",
       imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
       isImageLeft: false,
     },
@@ -61,12 +61,12 @@ export const FeatureSection: FC = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
       <div className="mx-auto max-w-2xl text-center mb-16">
-        <h2 className="text-base font-semibold leading-7 text-primary">Graphic Walker</h2>
+        <h2 className="text-base font-semibold leading-7 text-primary">lab2 AI</h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-primary">
-          Build data visualization with simple drag-and-drop operations.
+          Everything you need to build landing pages
         </p>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">
-          With Graphic Walker, you can create stunning data visualizations without writing a single line of code.
+          Got a quick idea that you want to test with data? lab2 AI is the perfect tool for you. It helps you build small data apps for analytics.
         </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">

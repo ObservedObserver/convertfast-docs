@@ -23,7 +23,7 @@ const plans = [
     name: "Pro",
     id: "plan-pro",
     href: "#",
-    price: { monthly: "$29", annually: "$290" },
+    price: { monthly: "$15", annually: "$120" },
     description: "Ideal for professionals and small teams.",
     actionTitle: "Start free trial",
     features: [

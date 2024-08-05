@@ -4,50 +4,49 @@ import { cn } from "@/lib/utils";
 
 const plans = [
   {
-    name: "Starter",
-    id: "plan-starter",
+    name: "Serverless Plan",
+    id: "plan-serverless",
     href: "#",
     price: { monthly: "$0", annually: "$0" },
-    description: "Perfect for individual developers or small projects.",
-    actionTitle: "Get started",
+    description: "Deploy static website and Serverless functions in seconds.",
+    actionTitle: "Try Serverless",
     features: [
-      "5 landing page templates",
-      "Basic customization options",
-      "Export to HTML/CSS",
-      "48-hour email support",
+      "Deploy static and Serverless functions",
+      "Free and automatic SSL certificates",
+      "CI/CD out of the box",
+      "Community support",
     ],
     popular: false,
   },
   {
-    name: "Pro",
-    id: "plan-pro",
+    name: "Developer Plan",
+    id: "plan-developer",
     href: "#",
     price: { monthly: "$5", annually: "$60" },
-    description: "Ideal for growing businesses and agencies.",
-    actionTitle: "Get started",
+    description: "Deploy both Serverless and Containerized services with priority support.",
+    actionTitle: "Deploy with Developer Plan",
     features: [
-      "20 landing page templates",
-      "Advanced customization",
-      "Export to React/Vue/Angular",
-      "24-hour email support",
-      "A/B testing tools",
+      "All Serverless features",
+      "Deploy containerized services",
+      "Up to 2 vCPU and 4GB memory for each container",
+      "Backup services and data",
+      "Deploy prebuilt images",
+      "Priority technical support",
     ],
     popular: true,
   },
   {
-    name: "Enterprise",
-    id: "plan-enterprise",
+    name: "Team Plan",
+    id: "plan-team",
     href: "#",
     price: { monthly: "$80", annually: "$960" },
-    description: "For large teams and high-volume projects.",
-    actionTitle: "Contact sales",
+    description: "For teams with fast growing business, focus on performance and scalability.",
+    actionTitle: "Your Current Plan",
     features: [
-      "Unlimited landing page templates",
-      "Full customization control",
-      "Export to any framework",
-      "Priority 24/7 support",
-      "Advanced analytics",
-      "White-labeling options",
+      "All Serverless and Developer features",
+      "Up to 4 vCPU and 16GB memory for each container",
+      "Priority builds and deployments",
+      "Dedicated support team contact group",
     ],
     popular: false,
   },
@@ -64,8 +63,7 @@ export function PricingSection() {
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-center">
-          ConvertFast offers flexible pricing options to suit developers and teams of all sizes. Start building stunning
-          landing pages faster than ever.
+        Zeabur offers three different plans for you, choose the best plan to boost your services and save your time and money.
         </p>
         <div className="mt-20 flow-root">
           <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 gap-x-4 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-3 xl:-mx-4">

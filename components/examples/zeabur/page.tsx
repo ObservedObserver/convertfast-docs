@@ -10,7 +10,7 @@ function LandingPage() {
       <HeroSection />
 			<FeatureSection />
 			<CTA />
-			<FAQ />
+			{/* <FAQ /> */}
 			<PricingSection />
     </>
   )

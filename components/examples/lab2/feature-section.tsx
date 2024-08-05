@@ -35,27 +35,21 @@ export const FeatureSection: FC = () => {
     {
       title: "AI-Powered App Creation",
       description: "Build data and AI apps with simple text prompts - no coding required.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      imageUrl: "https://wytpxelzxt4rwwd2.public.blob.vercel-storage.com/lab2/demos/lab2-demo1-zZeBicNU2jrHp0w77ZjILAJQK8bmRP.png",
       isImageLeft: true,
     },
     {
       title: "Streamlit Integration",
       description: "Generate Streamlit apps in minutes using AI assistance.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      imageUrl: "https://wytpxelzxt4rwwd2.public.blob.vercel-storage.com/lab2/demos/lab2-demo2-sDrOZpde1BkFHWPMo4M18wu1O3Qaox.png",
       isImageLeft: false,
     },
     {
-      title: "Focus on Solutions",
-      description: "Concentrate on real-world problems while lab2 AI handles app development.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      title: "Customizable AI Artifacts",
+      description: "Your customization AI Artifacts, provide various sandbox to AI Agent.",
+      imageUrl: "https://wytpxelzxt4rwwd2.public.blob.vercel-storage.com/lab2/demos/lab2-demo3-0S5JE1xYQA8eF3FTywE3z6GfDzLLh4.png",
       isImageLeft: true,
-    },
-    {
-      title: "Collaborative Workspace",
-      description: "Share apps instantly, gather feedback, and iterate in real-time.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
-      isImageLeft: false,
-    },
+    }
   ];
 
   return (

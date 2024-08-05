@@ -41,19 +41,19 @@ export const FeatureSection: FC = () => {
     {
       title: "Cloud-Native Scalability",
       description: "Designed for cloud environments, Graphic Walker efficiently handles large-scale data sets, ensuring smooth performance as your data grows.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      imageUrl: "https://pub-8e7aa5bf51e049199c78b4bc744533f8.r2.dev/graphic-walker-banner.png",
       isImageLeft: false,
     },
     {
       title: "Open-Source Flexibility",
       description: "As an open-source solution, Graphic Walker offers full customization capabilities and community-driven improvements.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      imageUrl: "https://docs-us.oss-us-west-1.aliyuncs.com/img/graphic-walker/graphic-walker-overview.png",
       isImageLeft: true,
     },
     {
       title: "Interactive Data Exploration",
       description: "Empower users with intuitive tools for data analysis, enabling deep insights through dynamic visualizations and interactive features.",
-      imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
+      imageUrl: "https://docs-us.oss-us-west-1.aliyuncs.com/images/graphic-walker/gw-area-01.png",
       isImageLeft: false,
     },
   ];

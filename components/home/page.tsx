@@ -29,7 +29,8 @@ function HomePage() {
             Bootstrap your landing page with ConvertFast UI
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            Landing page sections that you can copy paste into your project. Provide a CLI for developers to generate landing pages with ease.
+            Landing page sections that you can copy paste into your project.
+            Provide a CLI for developers to generate landing pages with ease.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="w-full sm:w-auto" asChild>
@@ -41,52 +42,54 @@ function HomePage() {
           </div>
         </div>
         <Tabs defaultValue="example">
-          <TabsList>
-            <TabsTrigger value="example">Page Example</TabsTrigger>
-            <TabsTrigger value="hero">Hero Section</TabsTrigger>
-            <TabsTrigger value="feature">Feature Section</TabsTrigger>
-            <TabsTrigger value="cta">CTA Section</TabsTrigger>
-            <TabsTrigger value="faq">FAQ Section</TabsTrigger>
-            <TabsTrigger value="pricing">Pricing Section</TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto">
+            <TabsList>
+              <TabsTrigger value="example">Page Example</TabsTrigger>
+              <TabsTrigger value="hero">Hero Section</TabsTrigger>
+              <TabsTrigger value="feature">Feature Section</TabsTrigger>
+              <TabsTrigger value="cta">CTA Section</TabsTrigger>
+              <TabsTrigger value="faq">FAQ Section</TabsTrigger>
+              <TabsTrigger value="pricing">Pricing Section</TabsTrigger>
+            </TabsList>
+          </div>
           <TabsContent value="example">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <LandingPageExample />
               </CardContent>
             </Card>
           </TabsContent>
           <TabsContent value="hero">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <HeroSection />
               </CardContent>
             </Card>
           </TabsContent>
           <TabsContent value="feature">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <FeatureSection />
               </CardContent>
             </Card>
           </TabsContent>
           <TabsContent value="cta">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <CTA />
               </CardContent>
             </Card>
           </TabsContent>
           <TabsContent value="faq">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <FAQ />
               </CardContent>
             </Card>
           </TabsContent>
           <TabsContent value="pricing">
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
-              <CardContent>
+              <CardContent className="p-0">
                 <PricingSection />
               </CardContent>
             </Card>

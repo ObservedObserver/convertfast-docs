@@ -7,12 +7,16 @@ import { Card, CardContent } from "../ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { LogoCloud } from "./logo-cloud";
+import { SocialProof } from "./social-proof";
 
 function LandingPageExample() {
   return (
     <>
       <HeroSection />
+      <LogoCloud />
       <FeatureSection />
+      <SocialProof />
       <CTA />
       <FAQ />
       <PricingSection />
@@ -50,6 +54,8 @@ function HomePage() {
               <TabsTrigger value="cta">CTA Section</TabsTrigger>
               <TabsTrigger value="faq">FAQ Section</TabsTrigger>
               <TabsTrigger value="pricing">Pricing Section</TabsTrigger>
+              <TabsTrigger value="logo">Logo Cloud</TabsTrigger>
+              <TabsTrigger value="social">Social Proof</TabsTrigger>
             </TabsList>
           </div>
           <TabsContent value="example">
@@ -91,6 +97,20 @@ function HomePage() {
             <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
               <CardContent className="p-0">
                 <PricingSection />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="logo">
+            <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
+              <CardContent className="p-0">
+                <LogoCloud />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="social">
+            <Card className="mt-2 shadow-lg max-h-[680px] overflow-auto">
+              <CardContent className="p-0">
+                <SocialProof />
               </CardContent>
             </Card>
           </TabsContent>

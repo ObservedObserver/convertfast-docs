@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "prettier": {
     "tabWidth": 2
@@ -35,6 +36,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.417.0",
     "next": "^13.0.6",
+    "next-sitemap": "^4.2.3",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",

@@ -58,7 +58,7 @@ export function PricingSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
           <h2 className="text-base font-semibold leading-7 text-muted-foreground">Pricing</h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+          <p className="mt-2 text-4xl font-bold tracking-tight  sm:text-5xl">
             Choose the perfect plan for your needs
           </p>
         </div>
@@ -74,13 +74,13 @@ export function PricingSection() {
                     {plan.name}
                   </CardTitle>
                   <CardDescription className="mt-6 flex items-baseline gap-x-1">
-                    <span className="text-5xl font-bold tracking-tight text-primary">{plan.price.monthly}</span>
+                    <span className="text-5xl font-bold tracking-tight ">{plan.price.monthly}</span>
                     <span className="text-sm font-semibold leading-6 text-muted-foreground">/month</span>
                   </CardDescription>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{plan.price.annually} billed annually</p>
                 </CardHeader>
                 <CardContent>
-                  <p className="mt-10 text-sm font-semibold leading-6 text-primary">{plan.description}</p>
+                  <p className="mt-10 text-sm font-semibold leading-6 ">{plan.description}</p>
                   <ul role="list" className="mt-6 space-y-3 text-sm leading-6 text-muted-foreground">
                     {plan.features.map((feature) => (
                       <li key={feature}>

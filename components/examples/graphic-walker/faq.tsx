@@ -44,7 +44,7 @@ export const FAQ: FC = () => {
     <section className="bg-gradient-to-t from-zinc-50 to-white dark:from-zinc-950 to-black">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl text-center mb-8">
+          <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl text-center mb-8">
             Frequently Asked Questions
           </h2>
           <Accordion type="single" collapsible className="space-y-4">

@@ -41,7 +41,7 @@ function HomePage() {
               <Link href="/docs">Start now</Link>
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
-              <code className="p-1 rounded">npm install convertfast-ui</code>
+              <code className="p-1 rounded">npx convertfast-ui@latest init</code>
             </Button>
           </div>
         </div>

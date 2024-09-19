@@ -1,0 +1,98 @@
+name: Commit Article to Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      article_filename:
+        description: 'Filename for the article (including path)'
+        required: true
+        type: string
+      article_content:
+        description: 'Base64 encoded content of the article'
+        required: true
+        type: string
+      branch:
+        description: 'Branch to commit to'
+        required: true
+        type: string
+      callback_url:
+        description: 'Webhook URL to notify'
+        required: true
+        type: string
+
+jobs:
+  commit-article:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Create article file
+        run: |
+          FILENAME="${{ github.event.inputs.article_filename }}"
+          mkdir -p "$(dirname "$FILENAME")"
+          echo "${{ github.event.inputs.article_content }}" | base64 -d > "$FILENAME"
+
+      - name: Check for changes
+        id: git_status
+        run: |
+          git add "${{ github.event.inputs.article_filename }}"
+          if git diff --staged --exit-code; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.git_status.outputs.changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add or update article: ${{ github.event.inputs.article_filename }}"
+          
+          MAX_RETRIES=5
+          RETRY_COUNT=0
+          
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            echo "Attempt $((RETRY_COUNT+1)) of $MAX_RETRIES"
+            
+            # Fetch and rebase latest changes
+            git fetch origin ${{ github.event.inputs.branch }}
+            git rebase origin/${{ github.event.inputs.branch }}
+            
+            if git push origin ${{ github.event.inputs.branch }}; then
+              echo "Changes pushed successfully"
+              exit 0
+            else
+              echo "Push failed, retrying..."
+              RETRY_COUNT=$((RETRY_COUNT+1))
+              sleep $((RETRY_COUNT * 5))  # Exponential backoff
+            fi
+          done
+          
+          echo "Max retries reached. Pushing failed."
+          exit 1
+
+      - name: No changes
+        if: steps.git_status.outputs.changes == 'false'
+        run: echo "No changes to commit. Skipping commit and push steps."
+
+      - name: Call webhook
+        if: always()
+        run: |
+          WORKFLOW_STATUS="success"
+          if [ "${{ job.status }}" != "success" ]; then
+            WORKFLOW_STATUS="failure"
+          fi
+          
+          curl -X POST -H "Content-Type: application/json" -d '{
+            "status": "'"$WORKFLOW_STATUS"'",
+            "article_filename": "${{ github.event.inputs.article_filename }}",
+            "branch": "${{ github.event.inputs.branch }}",
+            "changes_made": "${{ steps.git_status.outputs.changes }}"
+          }' ${{ github.event.inputs.callback_url }}

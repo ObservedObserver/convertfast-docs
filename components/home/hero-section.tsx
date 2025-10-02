@@ -10,10 +10,16 @@ export const HeroSection: FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight  mb-6 drop-shadow-md">
-            Scale your landing pages for programmatic SEO
+            Ship production-ready landing pages with the ConvertFast UI CLI
           </h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            The landing page generator for developers and marketers. Build, deploy, and scale your landing pages with ease.
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">
+            Automate landing page creation with reusable sections, conversion copy, and SEO-friendly layouts. ConvertFast UI
+            gives growth teams and developers a shared toolkit for launching campaigns, validating ideas, and scaling
+            programmatic SEO pages without slowing down engineering.
+          </p>
+          <p className="text-base sm:text-lg text-muted-foreground mb-8">
+            Generate code, refine the design with shadcn-inspired components, and publish confident marketing experiences for
+            SaaS products, AI tools, agencies, and open source projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="w-full sm:w-auto" asChild>

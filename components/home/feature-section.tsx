@@ -33,26 +33,30 @@ const Feature: FC<FeatureProps> = ({ title, description, imageUrl, isImageLeft }
 export const FeatureSection: FC = () => {
   const features: FeatureProps[] = [
     {
-      title: "Rapid Landing Page Development",
-      description: "Build stunning landing pages in minutes with our intuitive drag-and-drop interface and pre-designed components.",
+      title: "Rapid landing page development",
+      description:
+        "Generate fully responsive hero, feature, pricing, and testimonial sections from the CLI. ConvertFast UI ships with copy guidance and best-practice layouts so you can produce consistent marketing experiences in record time.",
       imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
       isImageLeft: true,
     },
     {
-      title: "Customizable Templates",
-      description: "Choose from a wide range of professionally designed templates and easily customize them to match your brand.",
+      title: "Customizable templates and tokens",
+      description:
+        "Swap colors, typography, and brand assets once and reuse them across every template. The design tokens mirror shadcn UI conventions, making it simple to align ConvertFast UI with your existing design system.",
       imageUrl: "https://ui.convertfa.st/images/convertfast-ui-cli.png",
       isImageLeft: false,
     },
     {
-      title: "Code Export and Integration",
-      description: "Export clean, optimized code that seamlessly integrates with your existing projects, saving valuable development time.",
+      title: "Code export and framework integration",
+      description:
+        "Export production-ready React and Tailwind code that plugs into your Next.js, Remix, or Astro project. Keep marketing pages version-controlled and collaborate with engineering using the same repository.",
       imageUrl: "https://ui.convertfa.st/images/convertfast-ui-light-demo.png",
       isImageLeft: true,
     },
     {
-      title: "Responsive Design",
-      description: "Create mobile-friendly landing pages that look great on all devices, ensuring a consistent user experience.",
+      title: "Performance-focused responsive design",
+      description:
+        "Deliver fast, accessible experiences on every device. ConvertFast UI optimizes spacing, typography, and image handling so you can meet Core Web Vitals targets while telling a compelling product story.",
       imageUrl: "https://ui.convertfa.st/images/convertfast-demo.png",
       isImageLeft: false,
     },
@@ -61,12 +65,13 @@ export const FeatureSection: FC = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
       <div className="mx-auto max-w-2xl text-center mb-16">
-        <h2 className="text-base font-semibold leading-7 ">ConvertFast</h2>
+        <h2 className="text-base font-semibold leading-7 ">ConvertFast UI feature highlights</h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl ">
-          Everything you need to build landing pages
+          Everything you need to scale high-performing landing pages
         </p>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">
-        This is not real product, just a showcase of generated landing page. ConvertFast is a powerful landing page builder for developers, offering code templates and components inspired by shadcn. Create beautiful, functional landing pages quickly and efficiently.
+          ConvertFast UI is purpose-built for growth teams that need to iterate quickly. Pair our section library with your
+          analytics stack, run experiments faster, and maintain a central source of truth for every campaign page.
         </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">

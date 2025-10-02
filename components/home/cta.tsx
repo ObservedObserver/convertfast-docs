@@ -9,21 +9,23 @@ export const CTA: FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-            Ready to build your high-converting landing page?
+            Ready to build a high-converting landing page pipeline?
           </h2>
           <p className="mt-6 text-xl leading-8 opacity-90 text-muted-foreground">
-            With ConvertFast, you can create stunning landing pages that turn visitors into customers. Start building for free and see the difference. This is not real product, just a showcase of generated landing page.
+            ConvertFast UI combines a CLI workflow, conversion-tested components, and ready-to-use copy so you can launch
+            tailored campaigns in minutes. Automate repetitive layout work, standardize branding, and keep marketing pages in
+            sync with your product team.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              Get started for free
+              Explore the CLI
             </Button>
             <Button size="lg" className="w-full sm:w-auto">
               View documentation
             </Button>
           </div>
           <p className="mt-6 text-sm opacity-75 text-muted-foreground">
-            No credit card required. Start building in minutes.
+            No credit card required. Scaffold your next landing page in minutes.
           </p>
         </div>
       </div>

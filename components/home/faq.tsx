@@ -6,36 +6,36 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-interface FAQItem {
+export interface FAQItem {
   question: string;
   answer: string;
 }
 
-const faqs: FAQItem[] = [
+export const faqs: FAQItem[] = [
   {
-    question: "This is not real product, just a showcase of generated landing page.",
+    question: "What is ConvertFast UI?",
     answer:
-      "This is not real product, just a showcase of generated landing page.",
+      "ConvertFast UI is an open-source CLI and component library that generates landing page sections, copy, and layouts. It helps growth teams launch programmatic SEO pages and product marketing sites without hand-coding each screen from scratch.",
   },
   {
-    question: "Is ConvertFast open source?",
+    question: "How does ConvertFast UI differ from visual landing page builders?",
     answer:
-      "Yes, ConvertFast is an open-source project. This means you can use, modify, and contribute to the codebase. We believe in transparency and community-driven development, which helps us continually improve and adapt to developers' needs.",
+      "Traditional drag-and-drop tools focus on publishing pages inside their hosted platform. ConvertFast UI outputs clean React and Tailwind code that you can version control, customize, and deploy alongside the rest of your application.",
   },
   {
-    question: "How does ConvertFast compare to other landing page builders?",
+    question: "Can the CLI integrate with my existing tech stack?",
     answer:
-      "ConvertFast stands out by focusing on developers' needs. Unlike traditional drag-and-drop builders, we provide clean, exportable code that integrates seamlessly with your existing projects. Our components are based on popular libraries like shadcn, ensuring high-quality, customizable UI elements.",
+      "Yes. The generated code works seamlessly with popular frameworks including Next.js, Remix, Astro, and Vite. Because the output is standard React and Tailwind, you can connect analytics, localization, or CMS tooling just like any other page in your repository.",
   },
   {
-    question: "Can I use ConvertFast with my preferred frontend framework?",
+    question: "Does ConvertFast UI support collaboration between marketing and engineering?",
     answer:
-      "Absolutely! ConvertFast is designed to be framework-agnostic. While our components are primarily React-based, the exported code can be easily adapted to work with other popular frontend frameworks like Vue, Angular, or even vanilla JavaScript.",
+      "ConvertFast UI keeps design tokens, content structure, and component logic in one place. Marketers can update copy in MDX, while engineers retain control of the codebase. This shared workflow reduces handoffs and helps teams iterate on experiments faster.",
   },
   {
-    question: "Is there a learning curve to using ConvertFast?",
+    question: "Is there documentation to help me get started?",
     answer:
-      "ConvertFast is designed to be intuitive for developers familiar with modern web development practices. If you're comfortable with React and component-based architecture, you'll find ConvertFast easy to use. We also provide comprehensive documentation and examples to help you get started quickly.",
+      "Absolutely. The documentation covers installation, CLI commands, customization tips, and real-world templates. You can follow step-by-step guides to generate your first landing page and extend it with additional sections or CMS data.",
   },
 ];
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { DocsThemeConfig, ThemeSwitch, useConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
+import { SITE_URL } from './site.config'
 
 const config: DocsThemeConfig = {
   logo: <span>ConvertFast UI</span>,
@@ -26,22 +27,24 @@ const config: DocsThemeConfig = {
     text: "ConvertFast UI is a Free and Open Source project under MIT LICENSE."
   },
   // darkMode: true,
-  docsRepositoryBase: 'https://github.com/ObservedObserver/convertfast-ui',
+  docsRepositoryBase: 'https://github.com/ObservedObserver/convertfast-docs',
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
-    const url =
-      'https://ui.convertfa.st' +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+    const cleanPath = asPath.split('#')[0].split('?')[0]
+    const localizedPath = defaultLocale === locale ? cleanPath : `/${locale}${cleanPath}`
+    const url = `${SITE_URL}${localizedPath}`
  
     return (
       <>
         <meta property="og:url" content={url} />
+        <meta property="og:site_name" content="ConvertFast UI" />
         <meta property="og:title" content={frontMatter.title || 'convert fast'} />
         <meta
           property="og:description"
           content={frontMatter.description || 'convert fast docs'}
         />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
         <link rel="canonical" href={url} />
       </>
     )
@@ -50,7 +53,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
         return {
-          titleTemplate: "%s – ConvertFast UI"
+          titleTemplate: "%s | ConvertFast UI"
         };
     }
   },

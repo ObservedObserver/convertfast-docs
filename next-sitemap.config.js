@@ -1,7 +1,17 @@
+const { SITE_URL } = require("./site.config");
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: process.env.SITE_URL || "https://ui.convertfa.st",
-    generateRobotsTxt: true, // (optional)
-    generateIndexSitemap: false
-    // ...other options
+    siteUrl: SITE_URL,
+    generateRobotsTxt: true,
+    generateIndexSitemap: false,
+    robotsTxtOptions: {
+      policies: [
+        {
+          userAgent: "*",
+          allow: "/",
+        },
+      ],
+      additionalSitemaps: [`${SITE_URL}/sitemap.xml`],
+    },
 };

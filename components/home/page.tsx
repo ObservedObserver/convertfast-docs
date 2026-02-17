@@ -12,6 +12,7 @@ import { SocialProof } from "./social-proof";
 import { ThemeSwitcher, ThemeWrapper } from "./theme";
 import Head from "next/head";
 import { SEOContent } from "./seo-content";
+import { SITE_URL } from "@/site.config";
 
 function LandingPageExample() {
   return (
@@ -48,10 +49,11 @@ function HomePage() {
       "Customizable shadcn-inspired design tokens",
       "Framework-agnostic React and Tailwind output",
     ],
-    url: "https://docs.convertfa.st",
+    url: `${SITE_URL}/`,
     sameAs: [
-      "https://github.com/steven-tey/convertfast-ui",
-      "https://ui.convertfa.st",
+      "https://github.com/ObservedObserver/convertfast-ui",
+      "https://github.com/ObservedObserver/convertfast-docs",
+      "https://twitter.com/ob12er",
     ],
   };
 
@@ -67,6 +69,27 @@ function HomePage() {
       },
     })),
   };
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "ConvertFast UI",
+    url: `${SITE_URL}/`,
+    inLanguage: "en",
+  };
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "ConvertFast UI",
+    url: `${SITE_URL}/`,
+    logo: `${SITE_URL}/logos/Vercel.svg`,
+    sameAs: [
+      "https://github.com/ObservedObserver/convertfast-ui",
+      "https://github.com/ObservedObserver/convertfast-docs",
+      "https://twitter.com/ob12er",
+    ],
+  };
+  const hasVisibleFaq = faqs.length > 0;
 
   return (
     <ThemeWrapper>
@@ -83,7 +106,8 @@ function HomePage() {
             content="Generate high-converting landing pages with the ConvertFast UI CLI, reusable components, and SEO-friendly templates for SaaS, startups, and product launches."
           />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://docs.convertfa.st/" />
+          <meta property="og:url" content={`${SITE_URL}/`} />
+          <meta property="og:site_name" content="ConvertFast UI" />
           <meta name="twitter:card" content="summary_large_image" />
           <script
             type="application/ld+json"
@@ -91,10 +115,24 @@ function HomePage() {
               __html: JSON.stringify(productJsonLd),
             }}
           />
+          {hasVisibleFaq && (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(faqJsonLd),
+              }}
+            />
+          )}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(faqJsonLd),
+              __html: JSON.stringify(websiteJsonLd),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(organizationJsonLd),
             }}
           />
         </Head>
@@ -119,6 +157,17 @@ function HomePage() {
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 <code className="p-1 rounded">npx convertfast-ui@latest init</code>
               </Button>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3 text-sm">
+              <Link href="/docs" className="underline underline-offset-4">
+                Read docs
+              </Link>
+              <Link href="/blog" className="underline underline-offset-4">
+                Read blog
+              </Link>
+              <Link href="/examples" className="underline underline-offset-4">
+                Browse examples
+              </Link>
             </div>
           </div>
           <Tabs defaultValue="example">

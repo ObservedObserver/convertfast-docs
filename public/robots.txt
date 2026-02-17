@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://example.com
+Host: https://ui.convertfa.st
 
 # Sitemaps
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://ui.convertfa.st/sitemap.xml

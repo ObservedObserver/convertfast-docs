@@ -96,8 +96,23 @@ function run() {
       errors.push(`${file} is missing`);
       continue;
     }
-    assertNoLegacyHosts(file, content);
+    // `docs.convertfa.st` is valid inside redirect rules in next.config.js.
+    if (file !== "next.config.js") {
+      assertNoLegacyHosts(file, content);
+    }
     assertNoNoindex(file, content);
+    if (file === "next.config.js") {
+      if (!content.includes("docs.convertfa.st")) {
+        errors.push(
+          "next.config.js is missing redirect host rule for docs.convertfa.st"
+        );
+      }
+      if (!content.includes("https://ui.convertfa.st/:path*")) {
+        errors.push(
+          "next.config.js is missing canonical redirect destination to ui.convertfa.st"
+        );
+      }
+    }
   }
 
   assertSitemapAndRobots();

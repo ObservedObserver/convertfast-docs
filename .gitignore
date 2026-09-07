@@ -1,2 +1,5 @@
 .next
 node_modules
+
+# Private local working documents and analytical data. Never commit.
+/.local-docs/

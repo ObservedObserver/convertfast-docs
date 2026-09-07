@@ -1,0 +1,6 @@
+# Private working documents must not be uploaded by local Vercel deployments.
+.local-docs/
+
+# Local dependencies and build output.
+node_modules/
+.next/

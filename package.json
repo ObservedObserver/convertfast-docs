@@ -61,6 +61,7 @@
     "node": "22.x"
   },
   "resolutions": {
-    "zod": "4.1.12"
+    "zod": "4.1.12",
+    "@xmldom/xmldom": "0.9.12"
   }
 }

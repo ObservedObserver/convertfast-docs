@@ -1,0 +1,28 @@
+---
+title: "Navigation in a generated landing page"
+description: "Keep navigation in your application layout. Navbar is a historical manual example, not an installable ConvertFast UI 0.2.0 block."
+---
+
+# Navigation
+
+ConvertFast UI 0.2.0 generates the body of a landing page. Navigation belongs to your application's layout, where it can stay consistent between marketing, documentation, and account routes.
+
+`navbar` is not a supported section name for `page add` or `block add`. This URL remains available for readers of the older documentation. The repository contains historical navigation examples for manual adaptation; they are not part of the released CLI block set.
+
+## Place navigation in the application
+
+In an App Router project, use the appropriate layout to share navigation across routes. In a Pages Router project, use your existing application wrapper or layout convention. Keep account state and authentication behavior with the application rather than copying it into every generated section.
+
+Start with the destinations a visitor actually needs. A logo usually returns to the homepage. Product documentation should open the documentation entry point, and a signup action should use the same destination as the rest of your application. Check relative anchors when sharing navigation across routes: a link to `#pricing` only works where that section exists.
+
+## Adapt a manual example
+
+If you copy an older navigation component from the source repository, review its imports against your installed shadcn components and aliases. Replace product names, logo assets, sample destinations, and any assumed authentication state. Verify its behavior with your application's Next.js and React versions before adopting it.
+
+The seven supported generated sections are hero, logo cloud, features, social proof, CTA, FAQ, and pricing. Use the [CLI reference](/docs/cli) for their command names instead of treating an arbitrary repository component as an installable block.
+
+## Test the complete menu
+
+On mobile, open and close the menu, follow a nested link, and return with browser navigation. Confirm the open menu does not hide the action it is meant to expose. Use the keyboard to reach every control and check that focus returns sensibly after closing an overlay.
+
+Finally, load a generated route directly. Navigation must work without first visiting the homepage, and a sticky header should not cover the first heading or an anchor target.

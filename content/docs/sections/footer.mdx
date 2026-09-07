@@ -1,0 +1,28 @@
+---
+title: "Footers in generated landing pages"
+description: "Add a footer through your application layout. Footer is a historical manual example and is not an installable ConvertFast UI 0.2.0 section."
+---
+
+# Footer
+
+A footer provides supporting navigation and publisher information after the landing page content. Use it for destinations that matter across the site, such as documentation, source code, contact details, and terms that actually apply to your product.
+
+`footer` is not a supported section name for ConvertFast UI 0.2.0 `page add` or `block add`. This page preserves an older documentation URL. Footer components in the source repository are historical manual examples, not released CLI blocks.
+
+## Reuse your application's layout
+
+Place shared footer content in the layout that already owns your navigation. App Router projects can use their relevant layout file; Pages Router projects can use their existing shared wrapper. A generated marketing route can then focus on its own sections while the site's supporting links stay consistent.
+
+Do not duplicate a footer inside a generated page when the parent layout already renders one. Check the result at the actual route, including nested layouts, rather than viewing the component alone.
+
+## Choose useful links
+
+Link to a working support channel and the documentation for your published product. If source is public, identify the correct repository. If you offer accounts or paid services, link to the policies and account controls that exist for that service. A copied template label should never suggest a legal policy or support commitment you have not provided.
+
+Avoid filling columns with empty categories. A short set of real destinations is easier to maintain than a large footer copied from a different business. Keep copyright attribution accurate and preserve required license notices when reusing source.
+
+## Adapting historical source
+
+A manually copied footer may depend on older UI imports, aliases, or icon packages. Review those dependencies and run the application build before shipping it. Replace sample company names, social links, newsletter forms, and destinations. The released CLI does not connect a footer newsletter form to an email service.
+
+Use keyboard navigation to check every link, then inspect wrapping at a narrow viewport. If the footer contains a form, test its success and failure states. See the [supported sections](/docs/cli#add-or-replace-a-section) for components that the CLI can install directly.

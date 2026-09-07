@@ -1,0 +1,35 @@
+---
+title: "ConvertFast UI documentation"
+description: "Generate editable Next.js landing pages and shadcn blocks with ConvertFast UI 0.2.0. Choose a template, create a route, and customize the source."
+---
+
+# ConvertFast UI documentation
+
+ConvertFast UI is an open-source CLI that adds landing page source code to an existing Next.js application. You choose a route and a template, then edit the generated React components in your own repository. The CLI does not host your site or generate product copy with an AI service.
+
+Version 0.2.0 supports TypeScript projects using Next.js 14, 15, or 16, App Router or Pages Router, and Tailwind CSS 3 or 4. Your project needs a shadcn configuration and Node.js 20.18.1 or newer. Your chosen Next.js release may require a newer Node.js version.
+
+## Generate your first route
+
+Run these commands from the application directory after [installing the prerequisites](/docs/installation):
+
+```sh
+npx convertfast-ui@latest init --yes
+npx convertfast-ui@latest page create marketing
+```
+
+Open `/marketing` in your running application. The generated page includes hero, logo cloud, features, social proof, CTA, FAQ, and pricing sections. Use `--template editorial` for the second design. Both templates produce editable code, so you can remove sections that your product does not need.
+
+Use `.` as the page name to target the homepage. Existing files are preserved unless you explicitly request an overwrite. Review the generated code before using `--force` on a page you have already customized.
+
+## Choose how much to generate
+
+[Page generation](/docs/cli) creates a complete route and its sections. App Router sections sit beside the route in `_components`. Pages Router sections live under the configured components directory, outside `pages`.
+
+[Standalone blocks](/docs/cli#install-a-block) suit an existing design. For example, `block add faq` installs a FAQ component for you to import where it belongs. The block definitions ship in the npm package; missing shadcn dependencies still need network access.
+
+Start with the [hero section](/docs/sections/hero-section) if you are deciding what the page should say. The [examples](/examples) explain composition choices, and the [coding agent workflow](/docs/skills) provides a bounded prompt for adapting the generated code.
+
+## Before you publish
+
+Replace every sample testimonial, company logo, price, image, and link. Connect buttons to working destinations and add page metadata for your product. Run your application's build and check the page on a phone. ConvertFast supplies a starting layout; product claims, checkout behavior, accessibility review, and deployment remain part of your application.

@@ -1,0 +1,41 @@
+---
+title: "Explain your product in the hero section"
+description: "Write a specific landing page heading, choose a useful product visual, and verify that the first action matches the visitor\u2019s task."
+date: 2024-09-19
+author: observedobserver
+lastReviewed: 2026-09-07
+---
+
+# Explain your product in the hero section
+
+The hero is the first major section of a landing page. It should give visitors enough information to decide whether the product belongs in their workflow. A heading, short explanation, and useful next action can do that without asking the reader to decode a slogan.
+
+Start with a plain sentence about what the product produces and who uses it. For ConvertFast, "Generate editable landing pages in your Next.js project" identifies both the output and the environment. Supporting text can explain that the result is local React source and that shadcn configuration is required.
+
+## Write the heading before decorating it
+
+List the facts a visitor needs to understand the offer. Choose the one that separates it from unrelated products and put that in the heading. Move prerequisites or implementation detail into the supporting paragraph if they make the headline difficult to scan.
+
+Avoid claims such as "the fastest" without a defined comparison and evidence. A concrete description of the saved step is more useful: copying a complete route and its section files explains the behavior without a benchmark claim.
+
+## Show the result or the workflow
+
+Use a visual that supports the explanation. A screenshot can show the generated page; a short command beside a file tree can explain how it enters an existing application. An unrelated dashboard image may fill space while leaving the product harder to understand.
+
+Choose an image size that remains readable on a phone. If a screenshot contains essential text, repeat the necessary information in normal page content rather than expecting someone to zoom into an image. Decorative imagery should not displace the heading and primary action.
+
+## Adapt the generated hero
+
+Generate a separate route to experiment safely:
+
+```sh
+npx convertfast-ui@latest page create hero-review --template editorial
+```
+
+Edit the generated hero source, replace the sample copy, and connect its action to a working destination. Keep the page heading appropriate to the application's layout. A generated hero may supply the main heading already, so check the complete route rather than inspecting the component alone.
+
+## Review with someone unfamiliar with the product
+
+Ask them what the product does and what they expect after pressing the primary button. Their answer can reveal missing context more directly than asking whether the design looks good.
+
+Then check a narrow viewport, browser zoom, keyboard focus, and the page with images unavailable. The promise should remain understandable in each case. Follow the [hero component guide](/docs/sections/hero-section) for installation and replacement commands, and the [CTA article](/blog/posts/landing-page-101-what-is-cta) for checking the next step.

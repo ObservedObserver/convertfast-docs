@@ -1,0 +1,51 @@
+---
+title: "Use ConvertFast UI with a coding agent"
+description: "A practical prompt workflow for adapting generated Next.js landing pages with a coding agent. Uses the existing ConvertFast UI CLI and editable components."
+---
+
+# Use ConvertFast UI with a coding agent
+
+ConvertFast gives a coding agent a concrete starting point: a generated route, local section files, and an existing application to inspect. You can use this workflow with your own coding assistant. ConvertFast 0.2.0 does not include a separately published skill package, hosted AI generation, or an AI subscription.
+
+## Generate a page before rewriting it
+
+Initialize the project and choose a new route so the agent has a bounded set of files to edit:
+
+```sh
+npx convertfast-ui@0.2.0 init --yes
+npx convertfast-ui@0.2.0 page create launch --template editorial
+```
+
+First run the application and confirm `/launch` loads. Save that state in Git. This separates installation problems from changes introduced while adapting the page.
+
+## Give the agent facts and boundaries
+
+Replace the bracketed text below with your product information. Keep the request specific enough that you can review the resulting diff.
+
+```text
+Adapt the ConvertFast landing page at /launch for this product:
+Product: [name and one-sentence purpose]
+Audience: [who has the problem]
+Main task: [what a visitor can accomplish]
+Primary destination: [working signup, purchase, or docs URL]
+Verified evidence: [approved quotes, screenshots, or none]
+Price and limits: [actual terms, or omit pricing]
+
+Inspect package.json, landing-pages.json, components.json, and the
+router before editing. Keep the installed framework and UI conventions.
+Edit the generated route and its section files. Use existing shared UI.
+Remove all sample claims, logos, names, prices, and placeholder links.
+Do not invent testimonials, customers, metrics, or integrations.
+Use one page heading and descriptive section headings. Add accurate
+route metadata using this application's router conventions.
+Keep interactive controls keyboard accessible. Explain each changed
+file and run the existing build and lint commands. Report failures.
+```
+
+The CLI detects supported project versions and routers; the agent still needs to inspect how your application handles metadata, navigation, and analytics. Do not ask it to upgrade the entire framework as an incidental step in a copy change.
+
+## Review the result as an application change
+
+Read every product claim and check every destination yourself. Open the page at desktop and mobile widths, use the keyboard to reach its controls, and complete the primary action. A button that looks correct may still point to sample content.
+
+Run a production build after the agent finishes. Inspect the generated HTML for the title, description, canonical URL, and content you expect visitors to find. The [publishing checklist](/docs/seo-operations) covers these checks. If you later regenerate a section with `--force`, its local edits can be replaced, so commit the approved version before experimenting again.

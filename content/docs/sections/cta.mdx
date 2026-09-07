@@ -1,0 +1,44 @@
+---
+title: "Call to action for Next.js"
+description: "Install and customize a ConvertFast call-to-action block. Connect the button to a real signup, purchase, download, or documentation destination."
+---
+
+# Call to action
+
+A call to action asks the visitor to take a specific next step. Use this section when the surrounding page has answered enough questions for someone to act. The label should describe what happens immediately after the click.
+
+"Read installation steps" and "Create an account" represent different levels of commitment. Choose the one that matches your product and the visitor's stage. The template provides presentation code; it does not create an account system, checkout session, or mailing list.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add cta
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing cta --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `CTA` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Update the title, description, action label, and destination in the generated component. Where the selected template exposes props, pass your values from the page; otherwise edit its local source. Remove placeholder anchors such as `#start` unless the matching destination exists.
+
+Use a link for navigation and a button for an operation such as submitting a form. If the action starts a network request, implement pending, success, and error states in your application. Never leave a visual confirmation that appears before the operation succeeds.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="cta" />
+
+[Open the editorial preview](/demo/editorial?section=cta) to compare the second layout.
+
+## Check before publishing
+
+Complete the action in a fresh browser session, then repeat with keyboard navigation and at phone width. Check whether authentication redirects preserve the intended destination. Track a completed signup, download, or purchase separately from the CTA click so a broken step after the button is visible in your measurements.

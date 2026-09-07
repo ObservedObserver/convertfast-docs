@@ -1,0 +1,44 @@
+---
+title: "Logo cloud for Next.js"
+description: "Add a logo cloud to a Next.js landing page and replace sample brands with accurately labeled customer or integration references."
+---
+
+# Logo cloud
+
+A logo cloud is a compact list of organizations or products relevant to your page. Its label determines the claim you are making. "Used by" implies customers; "Integrates with" describes compatibility. Choose that label from evidence you actually have.
+
+The default template contains example company names and images. They demonstrate spacing and visual balance. They are not a list of ConvertFast customers, sponsors, or partners, and installing the component does not grant permission to reuse a third party's brand.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add logo-cloud
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing logo-cloud --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `LogoCloud` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Replace the logo list and heading together. Use an approved asset for each organization, preserve its proportions, and write a useful accessible name. If the section links to integrations, link each logo to the relevant integration instructions instead of an unrelated company homepage.
+
+A small number of verified references is sufficient. If the product has no customers or integrations to name, remove the section. You can show supported file types or a short workflow diagram elsewhere without presenting them as customer evidence.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="logo-cloud" />
+
+[Open the editorial preview](/demo/editorial?section=logo-cloud) to compare the second layout.
+
+## Check before publishing
+
+Inspect light and dark backgrounds, because a transparent logo can disappear against one of them. Check small screens for cropped marks or horizontal overflow. Confirm each linked logo has a keyboard focus indicator. Review the section's wording with whoever owns the customer relationship before publishing it.

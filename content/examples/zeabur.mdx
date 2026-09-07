@@ -1,0 +1,30 @@
+---
+title: "Zeabur example notes"
+description: "Landing page composition notes for explain a deployment workflow. Adapt the current ConvertFast templates without implying a customer endorsement."
+---
+
+# Zeabur example notes
+
+The earlier Zeabur-themed layout used a deployment product as its subject. This page retains the general design lessons without reproducing a third party's marketing page. It is not a customer case study or a claim that Zeabur endorses ConvertFast.
+
+## Explain a deployment workflow
+
+A deployment page needs to explain what can be deployed and what the user must provide. A clear hero can name the application type and the next action, while the following section shows the sequence from source to a running service.
+
+Show an actual deployment result if one is available. A screenshot of a successful build should be accompanied by enough context to understand the project and environment. Avoid promises such as "deploy anything" unless the supported scope and limitations justify them.
+
+## Choose sections around the decision
+
+Place prerequisites near the primary action. A visitor may need a repository, account, billing setup, or environment variables before the workflow can succeed. Explain those requirements in the page or link to a concise setup guide.
+
+Separate setup instructions from pricing. If plans vary by usage or resources, summarize the relevant unit rather than copying a fictional flat-price grid. Questions about persistence, regions, secrets, and rollback should reflect the actual product's behavior and documentation.
+
+## Build your own version
+
+Use the current [default template preview](/demo/default) or [editorial template preview](/demo/editorial) as a starting layout. The old product-specific mockup is not an installable template option. After [installation](/docs/installation), create an editable route:
+
+```sh
+npx convertfast-ui@latest page create product-example --template editorial
+```
+
+Replace all sample text, images, prices, and references. Review the generated source, remove sections that do not serve the product, and connect each action to a working destination. Test the complete route at mobile and desktop widths before publishing. The [coding agent workflow](/docs/skills) can help scope these edits without asking an assistant to invent product facts.

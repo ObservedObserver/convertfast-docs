@@ -1,0 +1,44 @@
+---
+title: "Social proof for Next.js"
+description: "Customize the ConvertFast testimonial block with verified quotes and clear attribution. Sample testimonials are layout placeholders."
+---
+
+# Social proof
+
+The social proof section displays evidence from people who have used your product. A useful testimonial names a concrete task or result and gives enough context to judge whether that experience applies to another visitor.
+
+ConvertFast templates include sample names, portraits, and quotes to illustrate the layout. These are not verified endorsements of ConvertFast or your product. Replace every entry with approved material, or remove the section until you have evidence worth publishing.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add social-proof
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing social-proof --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `SocialProof` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Edit the testimonial data in the generated source. Preserve a person's meaning when shortening a quote, and record approval for their name, role, company, and image. A quote about an old release should not silently become a claim about a new feature.
+
+If you have permission to reference a public issue, review, or case study, add a link that lets readers inspect the context. Do not substitute a star count for customer satisfaction or imply that a familiar company is a customer because one person contributed code.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="social-proof" />
+
+[Open the editorial preview](/demo/editorial?section=social-proof) to compare the second layout.
+
+## Check before publishing
+
+Check long quotes, missing portraits, and unusually long role names on mobile. Keep text readable without depending on an image of the quote. Confirm links have useful labels and the layout remains coherent when you remove an entry. Revisit the content when the quoted product behavior changes.

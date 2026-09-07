@@ -341,10 +341,10 @@
 
 @layer base {
   * {
-    @apply border-border !important;
+    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground !important;
+    @apply bg-background text-foreground;
   }
 }

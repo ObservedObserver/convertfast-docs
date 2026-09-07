@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://ui.convertfa.st
-
-# Sitemaps
-Sitemap: https://ui.convertfa.st/sitemap.xml

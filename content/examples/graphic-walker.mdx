@@ -1,0 +1,30 @@
+---
+title: "Graphic Walker example notes"
+description: "Landing page composition notes for explain an embeddable data interface. Adapt the current ConvertFast templates without implying a customer endorsement."
+---
+
+# Graphic Walker example notes
+
+The earlier Graphic Walker example used a data visualization product as the subject of a landing page layout. This page now keeps the composition lessons in text. It is not a customer case study and does not claim that the product uses or endorses ConvertFast.
+
+## Explain an embeddable data interface
+
+For an embeddable interface, the first question is often where it fits in an existing application. Use the hero to state the component's purpose, then show the smallest useful integration or a real screenshot of the interface.
+
+A screenshot needs context. Label the input data, the action being performed, and the result a user can inspect. If the product needs a specific data shape, put that requirement near an installation or documentation link rather than hiding it behind a generic feature claim.
+
+## Choose sections around the decision
+
+A useful sequence is a product heading, integration instructions, an example result, and compatibility answers. A pricing or testimonial section may be unnecessary for an open-source component. Remove it if it adds sample claims without helping the reader evaluate the software.
+
+Separate developer and end-user actions. "Read the integration guide" should open implementation documentation, while "Try the example" should open a working demonstration. The distinction helps a visitor choose without guessing what a button will do.
+
+## Build your own version
+
+Use the current [default template preview](/demo/default) or [editorial template preview](/demo/editorial) as a starting layout. The old product-specific mockup is not an installable template option. After [installation](/docs/installation), create an editable route:
+
+```sh
+npx convertfast-ui@latest page create product-example --template editorial
+```
+
+Replace all sample text, images, prices, and references. Review the generated source, remove sections that do not serve the product, and connect each action to a working destination. Test the complete route at mobile and desktop widths before publishing. The [coding agent workflow](/docs/skills) can help scope these edits without asking an assistant to invent product facts.

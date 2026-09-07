@@ -1,0 +1,44 @@
+---
+title: "FAQ section for Next.js"
+description: "Add an editable FAQ accordion to a Next.js landing page with ConvertFast UI. Write specific answers and verify keyboard interaction."
+---
+
+# FAQ section
+
+A FAQ section addresses questions that would otherwise stop someone from trying or buying your product. Good questions often come from installation issues, support conversations, or objections you hear while showing the product.
+
+For a developer tool, useful topics include supported framework versions, where generated code lives, required dependencies, and what happens to existing files. Use this section for answers that are missing elsewhere on the page, not for repeating the product slogan in question form.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add faq
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing faq --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `FAQ` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Replace the sample questions and answers with the actual limits of your product. The default FAQ source accepts an `items` array; inspect the type in your generated file before supplying data. The editorial design has its own local source, so do not assume the same component props across templates.
+
+Put the answer first. If a limitation has a workaround, explain both and link to the relevant documentation. Remove questions about unsupported services. The generated component is a visible accordion, not an automatic structured-data or search-ranking feature.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="faq" />
+
+[Open the editorial preview](/demo/editorial?section=faq) to compare the second layout.
+
+## Check before publishing
+
+Use Tab to reach an accordion trigger and the keyboard to open and close it. Confirm the answer remains readable on a phone and that links inside the answer are reachable. Review answers after changing pricing or compatibility. An outdated answer can send a visitor into a workflow that no longer exists.

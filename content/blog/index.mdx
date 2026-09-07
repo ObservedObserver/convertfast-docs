@@ -1,0 +1,26 @@
+---
+title: "Landing page implementation notes"
+description: "Practical notes on hero copy, calls to action, testimonials, FAQs, and maintaining copied UI components in a Next.js application."
+---
+
+# Landing page implementation notes
+
+These articles cover decisions you still need to make after generating a landing page: what the first heading says, where a button leads, which evidence to publish, and how to keep copied components working in your application.
+
+Start with the question your page needs to answer. The hero article focuses on explaining the product. The CTA guide follows the visitor through the next action. Social proof and FAQ guidance help you replace sample content with evidence and useful answers. The shadcn article describes the maintenance work that comes with owning component source.
+
+import { ArticleList } from '@/components/article-list'
+
+<ArticleList postsRoute="/blog/posts" />
+
+## Put an article into practice
+
+Generate a new route with the [installation guide](/docs/installation), then change one part of the page using real product information. Review that change in the running application before copying it across other routes. If you use a coding assistant, the [agent workflow](/docs/skills) gives it specific files, factual inputs, and verification steps.
+
+The [template previews](/examples) show layout choices. Their content is illustrative. Replace sample customers, prices, and claims before publishing your own page, and use the [publishing checklist](/docs/seo-operations) to inspect metadata and deployed behavior.
+
+## Read examples as examples
+
+The articles use hypothetical product decisions to explain implementation choices. A sample button label is a suggestion to adapt, not a report about another company's current website. Commands follow ConvertFast UI 0.2.0; check the CLI reference if you are maintaining a project created with an older release.
+
+Each article keeps its original publication date and records its latest editorial review separately. When following a technical instruction, use your installed application versions as the starting point. Build the project and test the specific route you changed. An article can explain a workflow, but it cannot verify your application's authentication, checkout, deployment, or product claims.

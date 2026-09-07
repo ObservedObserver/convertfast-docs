@@ -1,0 +1,45 @@
+---
+title: "What owning component source means for a landing page"
+description: "Understand the copy-and-edit workflow behind shadcn/ui and ConvertFast, including local customization, shared components, and upgrade responsibility."
+date: 2024-09-19
+author: observedobserver
+lastReviewed: 2026-09-07
+---
+
+# What owning component source means for a landing page
+
+A component library can expose a package API or place editable source in your project. shadcn/ui describes an approach where you receive component code and adapt it to your application. That makes local customization direct, but it also means you need to review and maintain the code you change. See the [shadcn/ui introduction](https://ui.shadcn.com/docs) for its own description of the model.
+
+ConvertFast uses that workflow at the landing page level. Its CLI copies route and section source, and its blocks install through shadcn. The resulting page lives in your application alongside your navigation, metadata, and business logic.
+
+## What you can change locally
+
+You can replace copy, remove a pricing section, alter spacing, or connect an action without waiting for ConvertFast to add a component prop. Your editor and Git diff show the code involved. An existing design system can supply colors and shared controls through the project's shadcn configuration.
+
+That flexibility is useful when the template is close to the required structure. It is less useful if you regenerate the same file after making extensive edits. Treat generation as a starting point and commit the result before changing it.
+
+## Understand the two layers
+
+A landing page section can depend on shared UI components such as a button, card, or accordion. Changing one shared button can affect several routes, while editing a route-specific feature section may affect only that page.
+
+ConvertFast's App Router output keeps sections in a route's `_components` folder. Pages Router output keeps section files outside `pages` so they do not become routes. The configured aliases determine where shared components live. Read the [CLI reference](/docs/cli) when working with custom paths or replacement flags.
+
+## Generate only what you need
+
+```sh
+npx convertfast-ui@latest block add hero-section
+```
+
+Use an individual block when the page already has a structure. For a new route:
+
+```sh
+npx convertfast-ui@latest page create marketing
+```
+
+Both approaches produce local code. Existing generated files require an explicit overwrite request. Save your edits before using `--force`, and review the resulting diff. A regenerated section can restore sample copy you had previously removed.
+
+## Budget for maintenance
+
+Copying code does not remove compatibility work. When upgrading Next.js, React, Tailwind, or shared UI dependencies, build the application and check the changed pages. Test behavior as well as appearance: accordion state, navigation, images, and form destinations all matter.
+
+Keep a small record of changes that depart from the original template if you expect to compare future versions. The practical benefit is control over the implementation, paired with responsibility for the version you ship.

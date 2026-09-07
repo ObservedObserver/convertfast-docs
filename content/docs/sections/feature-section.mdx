@@ -1,0 +1,44 @@
+---
+title: "Feature section for Next.js"
+description: "Explain product workflows with editable feature sections for Next.js. Install a ConvertFast block and replace sample screenshots and descriptions."
+---
+
+# Feature section
+
+The feature section gives the product claim in the hero a concrete explanation. Each item should describe something a person can do, the input it needs, or the result it produces. Use screenshots when they show a step that text alone would leave unclear.
+
+For example, a landing page CLI can show a command beside the resulting route files. That explains the workflow more precisely than an unrelated dashboard image or a list of adjectives about speed.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add feature-section
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing feature-section --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `FeatureSection` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Edit the section title and the individual feature items. The default source includes an item array and layout options; inspect the selected template before changing its fields. Replace all sample screenshots, captions, and image descriptions with material from your application.
+
+Keep one task per item. If an item needs several paragraphs to explain, link to a dedicated guide and keep the landing page description focused on the result. Remove features that are planned but unavailable, or label them clearly in a separate roadmap.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="feature-section" />
+
+[Open the editorial preview](/demo/editorial?section=feature-section) to compare the second layout.
+
+## Check before publishing
+
+Read the section in document order on a narrow screen. Alternating image and text layouts should remain understandable when columns stack. Check image size and aspect ratio, then verify that captions and alternative text add useful context. Ensure each documentation link opens the feature it actually describes.

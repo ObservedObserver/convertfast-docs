@@ -1,31 +1,10 @@
-const DEFAULT_SITE_URL = "https://ui.convertfa.st";
-
-function normalizeSiteUrl(url) {
-  return String(url || "")
-    .trim()
-    .replace(/\/+$/, "");
+const DEFAULT_SITE_URL = 'https://convertfa.st';
+function normalizeSiteUrl(value) {
+  const parsed = new URL(String(value || DEFAULT_SITE_URL).trim());
+  if (!['https:', 'http:'].includes(parsed.protocol) || parsed.pathname !== '/' || parsed.search || parsed.hash || parsed.username || parsed.password) {
+    throw new Error('SITE_URL must be a site origin, without credentials, path, query or fragment.');
+  }
+  return parsed.origin;
 }
-
-const envSiteUrl = normalizeSiteUrl(process.env.SITE_URL);
-const SITE_URL = envSiteUrl || DEFAULT_SITE_URL;
-const shouldEnforceSiteUrl =
-  process.env.ENFORCE_SITE_URL === "true" ||
-  (process.env.CI === "true" && process.env.NODE_ENV === "production");
-
-if (shouldEnforceSiteUrl && !envSiteUrl) {
-  throw new Error(
-    "[SEO] SITE_URL is required in production. Example: SITE_URL=https://ui.convertfa.st"
-  );
-}
-
-if (!envSiteUrl) {
-  console.warn(
-    `[SEO] SITE_URL is not set. Falling back to default: ${DEFAULT_SITE_URL}`
-  );
-}
-
-module.exports = {
-  DEFAULT_SITE_URL,
-  SITE_URL,
-  normalizeSiteUrl,
-};
+const SITE_URL = normalizeSiteUrl(process.env.SITE_URL);
+module.exports = { DEFAULT_SITE_URL, SITE_URL, normalizeSiteUrl };

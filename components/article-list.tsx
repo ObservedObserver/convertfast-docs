@@ -1,82 +1,38 @@
-import { getPagesUnderRoute } from "nextra/context";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useRouter } from "next/router";
-import { MdxFile } from "nextra";
-import { getAuthor } from "@/lib/author";
+import Link from 'next/link'
+import { getPageMap } from 'nextra/page-map'
+import { getAuthor } from '@/lib/author'
 
-export function ArticleList({ postsRoute = "/blog", limit = 20 }: { postsRoute: string; limit?: number }) {
-    const { basePath } = useRouter();
-    const articles: MdxFile[] = getPagesUnderRoute(postsRoute)
-        .filter((page) => page.kind === "MdxPage")
-        .filter((page) => page.name !== "index")
-        .filter((page) => (page as MdxFile).frontMatter)
-        .sort((a: MdxFile, b: MdxFile) => {
-            return (
-                new Date(b.frontMatter.date).getTime() -
-                new Date(a.frontMatter.date).getTime()
-            );
-        })
-        .slice(0, limit) as MdxFile[];
+type Article = {
+  route: string
+  name: string
+  frontMatter?: { title?: string; description?: string; date?: string; author?: string }
+  children?: Article[]
+}
 
-    return (
-        <div className="max-w-6xl mx-auto py-8 px-4">
-            <h2 className="text-3xl font-bold mb-8 px-8 flex gap-2 items-center">
-                Latest Articles
-            </h2>
-            <div className="">
-                {articles.map((article, index) => {
-                    const author = getAuthor(article.frontMatter.author);
-                    return (
-                        <article
-                            key={index}
-                            className="border-b border-gray-200 dark:border-gray-700 p-8 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer"
-                        >
-                            <a href={`${basePath}${article.route}`}>
-                                <h3 className="text-2xl font-semibold mb-2">
-                                    {article.frontMatter.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                                    {article.frontMatter.description}
-                                </p>
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center space-x-4">
-                                        {author && (
-                                            <Avatar>
-                                                <AvatarImage
-                                                    src={author.picture}
-                                                    alt={
-                                                        article.frontMatter
-                                                            .author
-                                                    }
-                                                />
-                                                <AvatarFallback>
-                                                    {article.frontMatter.author}
-                                                </AvatarFallback>
-                                            </Avatar>
-                                        )}
-                                        <div>
-                                            <p className="font-medium">
-                                                {author?.name}
-                                            </p>
-                                            <div className="flex items-center text-sm text-gray-500">
-                                                {/* <CalendarIcon className="mr-1 h-4 w-4" /> */}
-                                                {new Date(
-                                                    article.frontMatter.date
-                                                ).toLocaleDateString("en-US", {
-                                                    year: "numeric",
-                                                    month: "long",
-                                                    day: "numeric",
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* <Badge variant="secondary">{article.keywords}</Badge> */}
-                                </div>
-                            </a>
-                        </article>
-                    );
-                })}
-            </div>
-        </div>
-    );
+export async function ArticleList({ postsRoute = '/blog/posts', limit = 20 }: { postsRoute?: string; limit?: number }) {
+  const entries = await getPageMap(postsRoute) as Article[]
+  const articles = entries
+    .filter((entry) => entry.frontMatter && entry.name !== 'index')
+    .sort((a, b) => new Date(b.frontMatter.date || 0).getTime() - new Date(a.frontMatter.date || 0).getTime())
+    .slice(0, limit)
+
+  return (
+    <div className="divide-y divide-border">
+      {articles.map(({ route, frontMatter }) => {
+        const author = getAuthor(frontMatter.author)
+        return (
+          <article key={route} className="py-7">
+            <Link href={route} className="group block no-underline">
+              <h2 className="text-xl font-semibold group-hover:underline">{frontMatter.title}</h2>
+              <p className="mt-2 text-muted-foreground">{frontMatter.description}</p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {author?.name}
+                {frontMatter.date && <> · <time dateTime={frontMatter.date}>{new Date(frontMatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></>}
+              </p>
+            </Link>
+          </article>
+        )
+      })}
+    </div>
+  )
 }

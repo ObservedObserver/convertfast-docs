@@ -1,0 +1,11 @@
+export default {
+  "hero-section": "Hero Section",
+  "feature-section": "Features Section",
+  "pricing": "Pricing Section",
+  "cta": "CTA Section",
+  "faq": "FAQ Section",
+  "social-proof": "Social Proof",
+  "logo-cloud": "Logo Cloud",
+  "navbar": "Navbar Section",
+  "footer": "Footer Section"
+}

@@ -1,5 +1,7 @@
+"use client"
+
 import { cn } from "@/lib/utils";
-import { useTheme } from "nextra-theme-docs";
+import { useTheme } from "next-themes";
 import { createContext, useContext, useState } from "react";
 import { Button } from "../ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";

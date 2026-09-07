@@ -1,0 +1,60 @@
+---
+title: "ConvertFast UI CLI reference"
+description: "Reference for init, page create, page add, and block add in ConvertFast UI 0.2.0, including templates, overwrite rules, and registry options."
+---
+
+# CLI reference
+
+ConvertFast UI 0.2.0 provides initialization, page generation, and standalone block installation. Run commands from your Next.js application directory. Use `npx convertfast-ui@0.2.0` instead of `@latest` when you need a reproducible package version.
+
+## Initialize a project
+
+```sh
+npx convertfast-ui@latest init --yes
+```
+
+`init` records the detected Next.js version, router directory, and shadcn configuration in `landing-pages.json`. It also copies the sample assets. Options include `--router app`, `--router pages`, `--components path/to/components.json`, and `--force` to replace existing configuration.
+
+## Create a page
+
+```sh
+npx convertfast-ui@latest page create marketing
+npx convertfast-ui@latest page create launch --template editorial
+npx convertfast-ui@latest page create .
+```
+
+A page includes all seven supported sections. Templates are `default` and `editorial`. A relative name such as `marketing/pricing` creates a nested route; `.` targets the homepage. Existing generated `.tsx` files require `--force` to replace. A route already implemented with another extension must be moved or renamed first.
+
+Page commands accept `--skip-install` to leave dependency installation to you. It requires the default `--registry off` mode.
+
+## Add or replace a section
+
+```sh
+npx convertfast-ui@latest page add marketing faq
+npx convertfast-ui@latest page add marketing hero-section --template editorial --force
+```
+
+The syntax is `page add <page> <section>`. Supported section names are `hero-section`, `logo-cloud`, `feature-section`, `social-proof`, `cta`, `faq`, and `pricing`. A generated page already includes these sections, so adding one again normally requires `--force` and replaces its source. Save your edits first.
+
+For a custom page, place this marker where sections should be inserted:
+
+```tsx
+{/* convertfast:sections */}
+```
+
+## Install a block
+
+```sh
+npx convertfast-ui@latest block add hero-section
+npx convertfast-ui@latest block add faq --template editorial
+```
+
+Blocks install into your configured components directory. Import the installed component into your own page. Definitions come from registry JSON bundled in the npm package, so no ConvertFast registry server or namespace setup is required. The installer uses shadcn CLI 4.21.0 and downloads missing dependencies.
+
+`--force` replaces an existing bundled block. Existing public assets and shared UI components are preserved. With an explicitly configured remote `--namespace`, overwrite behavior follows shadcn and can include dependencies and assets.
+
+## Registry modes and failures
+
+Page generation defaults to `--registry off`, which copies bundled source and installs its missing UI dependencies. `--registry auto` tries registry installation and can fall back to template dependency installation; `--registry only` fails when registry installation fails. `--namespace @your-registry` selects a separately configured remote registry.
+
+If a command fails, read the error before retrying. Check router selection, aliases, network access, and conflicting files. Do not use `--force` as a general repair command. Run your application's build after generation and review the diff before deployment.

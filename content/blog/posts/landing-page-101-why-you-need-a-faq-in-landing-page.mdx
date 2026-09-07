@@ -1,0 +1,41 @@
+---
+title: "Write a FAQ that answers real product questions"
+description: "Choose FAQ questions from installation problems and purchase decisions, write direct answers, and test the generated accordion."
+date: 2024-09-19
+author: observedobserver
+lastReviewed: 2026-09-07
+---
+
+# Write a FAQ that answers real product questions
+
+A FAQ is useful when people repeatedly need the same answer before they can try or buy a product. It is optional. A short page that already explains its requirements may not need another section, while a technical product with installation constraints often does.
+
+Start with questions from support, issue reports, or product conversations. For a CLI, someone may need to know which framework versions work, whether commands overwrite files, or where generated components are stored. These questions affect the next action directly.
+
+## Put the answer first
+
+Answer the question in the first sentence. If the product supports Next.js 14, 15, and 16, say so before explaining the version detection process. When a limitation has a workaround, describe the limitation and then give the smallest useful next step.
+
+Link to a dedicated guide for details that would make the answer hard to scan. Keep the FAQ self-contained enough that a visitor can still decide whether the guide applies to them. Avoid making every answer a variation of the product slogan.
+
+## Keep claims within the released product
+
+A question about future support should not read like a shipped feature. If something is unsupported, say that clearly. Review answers when versions, pricing, or account requirements change. The same fact repeated across several pages creates several places that can become stale.
+
+A visible FAQ accordion is not itself a structured-data integration or a promise of a special search result. Write the answers because they help readers complete a task. Handle any structured data separately against the search platform's current documentation.
+
+## Add the component
+
+```sh
+npx convertfast-ui@latest block add faq
+```
+
+The block installs editable source into your configured components directory. The default template's FAQ accepts an items array; inspect the generated type when supplying questions and answers. Other templates can have different local implementations, so check the source you installed.
+
+If you used `page create`, a FAQ already exists in the generated page. Replace its sample content directly and remove questions that describe unrelated product capabilities. ConvertFast does not verify those answers for you.
+
+## Test interaction and usefulness
+
+Navigate to a trigger with the keyboard, open and close it, and follow any links in the answer. Check narrow screens, long questions, and answers with several sentences. The wording should remain understandable without relying on the accordion's visual styling.
+
+After publishing, compare incoming questions with the answers on the page. Repeated confusion can mean the answer is missing, outdated, or difficult to find. Improve that specific answer instead of adding a larger list of speculative questions. See the [FAQ component guide](/docs/sections/faq) for installation details.

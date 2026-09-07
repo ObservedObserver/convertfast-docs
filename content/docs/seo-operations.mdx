@@ -1,0 +1,34 @@
+---
+title: "Publish a Next.js landing page with accurate SEO metadata"
+description: "A publishing checklist for generated landing pages: original content, metadata, canonical URLs, demo isolation, redirects, and Search Console verification."
+---
+
+# Publish and check your landing page
+
+ConvertFast generates layout source. Publishing a useful landing page also requires accurate product content, working links, route metadata, and a deployment that search engines can access. Passing these checks makes a page eligible for discovery; it does not guarantee indexing or rankings.
+
+## Replace the sample content
+
+Read the generated page as a first-time visitor. Explain what the product does, who it helps, and what the primary action opens. Remove unused sections. Publish testimonials, company names, prices, and performance claims only when they describe your product and you can substantiate them.
+
+Use the page's main heading for its actual subject. Give sections descriptive headings and keep labels consistent with the destination of each link. An accessible FAQ can answer purchase questions, but adding one does not itself guarantee a search enhancement.
+
+## Set metadata for the route
+
+Add a unique title and description through your application's Next.js metadata conventions. Set the canonical URL to the preferred public URL for that page. Inspect the production response rather than relying only on source configuration: the deployed host and environment can change what users receive.
+
+Confirm the route returns a successful status, required images load, and unknown routes return a real 404. Check `robots.txt`, robots metadata, and response headers for unintended restrictions. Keep indexable canonical pages in the sitemap.
+
+## Keep template previews separate
+
+When documenting a template, explain the component on the documentation page and serve the sample layout on a separate preview route. Mark disposable preview routes `noindex` and leave them crawlable so a crawler can read that instruction. Keep them out of the sitemap. An iframe alone is not an indexing policy. Google's [robots metadata reference](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag) explains page-level controls.
+
+## When moving a domain
+
+Prepare a path-by-path permanent redirect from the old hostname to the new one. Update internal links, canonical URLs, and the sitemap together. Test the homepage, a nested document, images, and query strings on both hosts. Keep the old hostname and its certificate working so existing links reach the redirect. Follow Google's [site move guide](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes) for search-specific steps.
+
+## Verify after deployment
+
+Use Search Console URL Inspection to compare the live page, last crawl, and Google-selected canonical. Submit the sitemap for the preferred host and inspect representative pages after meaningful changes. Record dates and indexing reasons so later checks compare the same evidence.
+
+Monitor impressions and actual completed actions separately. A page can be accessible without being indexed, and a search visit can arrive without producing a signup. Fix a broken response or misleading content first; repeated indexing requests do not replace that work.

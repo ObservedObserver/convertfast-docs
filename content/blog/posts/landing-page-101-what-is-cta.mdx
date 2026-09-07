@@ -1,0 +1,43 @@
+---
+title: "Write a call to action that matches the next step"
+description: "Choose a precise CTA label, connect it to a working action, and measure completed outcomes separately from button clicks."
+date: 2024-09-19
+author: observedobserver
+lastReviewed: 2026-09-07
+---
+
+# Write a call to action that matches the next step
+
+A call to action tells someone what they can do next. Its label makes a small promise about the destination. "Read the installation guide" promises instructions. "Create an account" promises an account flow. A vague label makes the visitor do extra work to understand the same choice.
+
+For a developer tool, documentation may be the right primary action before signup. Someone evaluating a CLI needs to know whether it fits their project. Sending them directly to an unrelated account form can interrupt that evaluation, even if the button attracts clicks.
+
+## Start with the destination
+
+Open the destination before writing the label. Identify the first meaningful task a visitor can complete there and use that task to name the action. If a download requires an email address, disclose that step instead of implying an immediate file download.
+
+Keep the primary action consistent between the hero and the later CTA section when both serve the same decision. A secondary action can offer a lower-commitment alternative, such as reading the source, but should look and read like a different choice.
+
+## Connect the component
+
+Install the standalone ConvertFast block after configuring the project:
+
+```sh
+npx convertfast-ui@latest block add cta
+```
+
+A page generated with `page create` already includes a CTA. Edit its local source directly. To replace that source with the editorial version after saving your changes:
+
+```sh
+npx convertfast-ui@latest page add marketing cta --template editorial --force
+```
+
+Replace the title, supporting text, label, and destination. The template does not supply signup, checkout, or form processing. A navigational action needs a working link; a form submission needs application code for pending, success, and failure states.
+
+## Test past the click
+
+Use a fresh browser session to complete the action. Check authentication redirects, confirmation messages, and browser back navigation. Repeat on a phone and with a keyboard. A control that is easy to see can still be impossible to complete.
+
+Measure completed outcomes separately from clicks. If many visitors click but few finish, inspect the next step before changing the label. A broken form, unexpected requirement, or mismatched destination can explain the gap.
+
+Change one meaningful element at a time when comparing alternatives and keep the outcome definition stable. For a low-traffic page, a handful of clicks is too little evidence to declare a winning phrase. Direct user feedback and a working flow are often more useful at that stage. See the [CTA component guide](/docs/sections/cta) for implementation checks.

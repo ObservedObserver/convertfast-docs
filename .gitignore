@@ -3,3 +3,13 @@ node_modules
 
 # Private local working documents and analytical data. Never commit.
 /.local-docs/
+
+# Generated documentation search index.
+/public/_pagefind/
+*.tsbuildinfo
+
+# Reproducible package integration and local deployment state.
+/components/generated/
+/public/r/
+/.vercel/
+/.env*.local

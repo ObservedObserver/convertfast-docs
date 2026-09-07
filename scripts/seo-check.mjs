@@ -1,131 +1,91 @@
-import fs from "node:fs";
-import path from "node:path";
-import { createRequire } from "node:module";
-
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { request as httpRequest } from 'node:http';
 const require = createRequire(import.meta.url);
-const { SITE_URL } = require("../site.config.js");
-
-const rootDir = process.cwd();
-const errors = [];
-const expectedHost = new URL(SITE_URL).host;
-const shouldEnforceSiteUrl =
-  process.env.ENFORCE_SITE_URL === "true" ||
-  (process.env.CI === "true" && process.env.NODE_ENV === "production");
-
-function readFileSafe(filePath) {
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-  return fs.readFileSync(filePath, "utf8");
+const { SITE_URL } = require('../site.config.js');
+const base = process.env.SEO_BASE_URL || 'http://localhost:3000';
+const report = { base, canonical: SITE_URL, checkedAt: new Date().toISOString(), pages: [], registry: [] };
+async function get(route, options = {}) {
+  return fetch(new URL(route, base), { headers: { 'User-Agent': 'Googlebot', ...options.headers }, ...options });
 }
-
-function assertNoLegacyHosts(filePath, content) {
-  if (!content) return;
-  const bannedHosts = ["example.com", "docs.convertfa.st"];
-  for (const host of bannedHosts) {
-    if (content.includes(host)) {
-      errors.push(`${filePath} contains legacy host: ${host}`);
+function tags(html, name) { return [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'gi'))].map(match => match[0]); }
+function attr(tag, name) { return new RegExp(`\\b${name}=["']([^"']*)["']`, 'i').exec(tag)?.[1]; }
+function meta(html, name) { return tags(html, 'meta').filter(tag => attr(tag, 'name') === name).map(tag => attr(tag, 'content')); }
+try {
+  const sitemapResponse = await get('/sitemap.xml');
+  assert.equal(sitemapResponse.status, 200);
+  const xml = await sitemapResponse.text();
+  const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+  assert.ok(locations.length >= 26, 'Sitemap must retain existing content URLs');
+  const descriptions = new Set();
+  for (const location of locations) {
+    const url = new URL(location);
+    assert.equal(url.origin, SITE_URL);
+    assert.ok(!/^\/(demo|r|_pagefind)(\/|$)/.test(url.pathname), `Non-content URL in sitemap: ${location}`);
+    const response = await get(url.pathname);
+    assert.equal(response.status, 200, url.pathname);
+    assert.ok(!/noindex/i.test(response.headers.get('x-robots-tag') || ''), `${url.pathname} response is noindex`);
+    const html = await response.text();
+    const canonicals = tags(html, 'link').filter(tag => attr(tag, 'rel') === 'canonical').map(tag => attr(tag, 'href'));
+    assert.deepEqual(canonicals.map(value => new URL(value).href), [url.href], `${url.pathname} canonical`);
+    assert.equal(tags(html, 'h1').length, 1, `${url.pathname} must have one main heading`);
+    assert.ok(!meta(html, 'robots').some(value => /noindex/i.test(value)), `${url.pathname} HTML is noindex`);
+    const description = meta(html, 'description');
+    assert.equal(description.length, 1, `${url.pathname} description count`);
+    assert.ok(description[0].length >= 40, `${url.pathname} needs a meaningful description`);
+    assert.ok(!descriptions.has(description[0]), `${url.pathname} duplicates a description`);
+    descriptions.add(description[0]);
+    if (url.pathname === '/') {
+      for (const sample of ['Hear from Our Customers', 'Emily Chen', 'ethical approach to AI development']) assert.ok(!html.includes(sample), `Demo text leaked into homepage: ${sample}`);
+      assert.ok(!html.includes('/logos/Vercel.svg'), 'Incorrect organization logo');
+      assert.equal(tags(html, 'iframe').length, 0, 'Homepage preview should load on demand');
     }
+    report.pages.push({ path: url.pathname, status: response.status, canonical: canonicals[0], h1: 1 });
+  }
+  const robots = await (await get('/robots.txt')).text();
+  assert.ok(robots.includes(`Sitemap: ${SITE_URL}/sitemap.xml`));
+  assert.ok(!/^Disallow:\s*\/\s*$/mi.test(robots));
+  for (const route of ['/demo/default', '/demo/editorial?section=faq']) {
+    const response = await get(route);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get('x-robots-tag') || '', /noindex/);
+    assert.ok(meta(await response.text(), 'robots').some(value => /noindex/.test(value)));
+  }
+  for (const route of ['/not-a-real-convertfast-page', '/demo/missing', '/.local-docs/README.md']) assert.equal((await get(route)).status, 404, route);
+  const manifest = await (await get('/r/registry.json')).json();
+  assert.equal(manifest.homepage, SITE_URL);
+  assert.equal(manifest.items.length, 14);
+  for (const item of manifest.items) {
+    const response = await get(`/r/${item.name}.json`);
+    assert.equal(response.status, 200);
+    const payload = await response.json();
+    assert.equal(payload.name, item.name);
+    for (const file of payload.files) assert.ok(typeof file.content === 'string' && file.content.length, `${item.name} missing inline content`);
+    report.registry.push(item.name);
+  }
+  const oldSitemap = await get('/sitemap-0.xml', { redirect: 'manual' });
+  assert.equal(oldSitemap.status, 308);
+  assert.equal(oldSitemap.headers.get('location'), `${SITE_URL}/sitemap.xml`);
+  // A Host override validates the Next routing rules without requiring DNS changes.
+  if (new URL(base).hostname === 'localhost' || new URL(base).hostname === '127.0.0.1') {
+    // Node fetch can replace Host with its URL authority; the HTTP client preserves the test header.
+    const response = await new Promise((resolve, reject) => {
+      const req = httpRequest(new URL('/docs/cli?source=legacy&value=a%20b', base), { headers: { Host: 'ui.convertfa.st' } }, res => { res.resume(); resolve(res); });
+      req.on('error', reject); req.end();
+    });
+    assert.equal(response.statusCode, 308);
+    assert.equal(response.headers.location, `${SITE_URL}/docs/cli?source=legacy&value=a%20b`);
+  }
+  report.status = 'passed';
+  console.log(`SEO check passed: ${report.pages.length} pages, 14 registry items, demo isolation, privacy, and redirects.`);
+} catch (error) {
+  report.status = 'failed'; report.error = error.message;
+  process.exitCode = 1; console.error(error);
+} finally {
+  if (process.env.SEO_REPORT) {
+    await fs.mkdir(path.dirname(process.env.SEO_REPORT), { recursive: true });
+    await fs.writeFile(process.env.SEO_REPORT, JSON.stringify(report, null, 2) + '\n');
   }
 }
-
-function assertNoNoindex(filePath, content) {
-  if (!content) return;
-  const normalized = content.toLowerCase();
-  if (
-    normalized.includes('name="robots" content="noindex') ||
-    normalized.includes("x-robots-tag") && normalized.includes("noindex")
-  ) {
-    errors.push(`${filePath} contains noindex directive`);
-  }
-}
-
-function assertSitemapAndRobots() {
-  const robotsPath = path.join(rootDir, "public/robots.txt");
-  const sitemapPath = path.join(rootDir, "public/sitemap.xml");
-  const sitemap0Path = path.join(rootDir, "public/sitemap-0.xml");
-
-  const robots = readFileSafe(robotsPath);
-  const sitemap = readFileSafe(sitemapPath);
-  const sitemap0 = readFileSafe(sitemap0Path);
-
-  if (!robots) {
-    errors.push("public/robots.txt is missing");
-  }
-  if (!sitemap) {
-    errors.push("public/sitemap.xml is missing");
-  }
-  if (!sitemap0) {
-    errors.push("public/sitemap-0.xml is missing");
-  }
-
-  if (robots && !robots.includes(`Sitemap: ${SITE_URL}/sitemap.xml`)) {
-    errors.push("public/robots.txt sitemap does not match SITE_URL");
-  }
-
-  if (sitemap && !sitemap.includes(expectedHost)) {
-    errors.push("public/sitemap.xml does not include expected host");
-  }
-  if (sitemap0 && !sitemap0.includes(expectedHost)) {
-    errors.push("public/sitemap-0.xml does not include expected host");
-  }
-
-  assertNoLegacyHosts("public/robots.txt", robots);
-  assertNoLegacyHosts("public/sitemap.xml", sitemap);
-  assertNoLegacyHosts("public/sitemap-0.xml", sitemap0);
-}
-
-function run() {
-  if (shouldEnforceSiteUrl && !process.env.SITE_URL) {
-    errors.push(
-      "SITE_URL is required when CI production gate is enabled. Set SITE_URL=https://ui.convertfa.st"
-    );
-  }
-
-  const criticalFiles = [
-    "theme.config.tsx",
-    "components/home/page.tsx",
-    "next-sitemap.config.js",
-    "next.config.js",
-  ];
-
-  for (const file of criticalFiles) {
-    const fullPath = path.join(rootDir, file);
-    const content = readFileSafe(fullPath);
-    if (!content) {
-      errors.push(`${file} is missing`);
-      continue;
-    }
-    // `docs.convertfa.st` is valid inside redirect rules in next.config.js.
-    if (file !== "next.config.js") {
-      assertNoLegacyHosts(file, content);
-    }
-    assertNoNoindex(file, content);
-    if (file === "next.config.js") {
-      if (!content.includes("docs.convertfa.st")) {
-        errors.push(
-          "next.config.js is missing redirect host rule for docs.convertfa.st"
-        );
-      }
-      if (!content.includes("https://ui.convertfa.st/:path*")) {
-        errors.push(
-          "next.config.js is missing canonical redirect destination to ui.convertfa.st"
-        );
-      }
-    }
-  }
-
-  assertSitemapAndRobots();
-
-  if (errors.length > 0) {
-    console.error("[seo:check] Failed with the following issues:");
-    for (const issue of errors) {
-      console.error(`- ${issue}`);
-    }
-    process.exit(1);
-  }
-
-  console.log(`[seo:check] Passed. Canonical host is ${expectedHost}.`);
-}
-
-run();

@@ -1,0 +1,49 @@
+---
+title: "Install ConvertFast UI in a Next.js project"
+description: "Set up ConvertFast UI 0.2.0 with Next.js 14, 15, or 16, TypeScript, Tailwind CSS 3 or 4, and shadcn/ui."
+---
+
+# Installation
+
+ConvertFast UI runs inside an existing Next.js application. It copies source files and sample assets into that application, so begin with a clean Git working tree or a commit you can return to.
+
+## Requirements
+
+- Node.js 20.18.1 or newer, plus the requirements of your Next.js version.
+- Next.js 14, 15, or 16 with TypeScript and App Router or Pages Router.
+- Tailwind CSS 3 or 4 configured in the application.
+- A shadcn `components.json` with working component and utility aliases.
+
+Both root router directories and `src/app` or `src/pages` are supported. ConvertFast does not upgrade your application's dependencies. For a new application, create the Next.js project first and confirm that its unmodified page builds.
+
+## Initialize shadcn and ConvertFast
+
+Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) for your project. If shadcn is already configured, keep that configuration.
+
+```sh
+npx shadcn@latest init
+npx convertfast-ui@latest init --yes
+npx convertfast-ui@latest page create marketing
+```
+
+Initialization detects the installed Next.js version and router, writes `landing-pages.json`, and copies sample assets to `public/_convertfast`. With both routers present, it selects App Router. Pass `--router pages` to select Pages Router explicitly.
+
+Run your usual development command and open `/marketing`. Generation installs missing shadcn components, which requires a network connection. `--skip-install` copies page source without dependency installation when you prefer to manage dependencies yourself.
+
+## Check the output
+
+App Router creates `marketing/page.tsx` and a local `_components` directory under your router. Pages Router creates `marketing/index.tsx` and places its components outside the routes directory. The route location follows your existing project structure.
+
+The default template contains sample product content. Replace it before publishing. To try another composition on a separate route, run:
+
+```sh
+npx convertfast-ui@latest page create launch --template editorial
+```
+
+## Existing projects and custom aliases
+
+Initialization preserves an existing `landing-pages.json`. Re-run with `--force` only when you intend to replace that configuration, such as after moving the router.
+
+JSONC TypeScript configuration, inherited aliases, and custom `aliases.ui` and `aliases.utils` are supported. Aliases must resolve inside the application directory. Shared component packages outside it are unsupported in 0.2.0.
+
+`--components path/to/components.json` selects a nonstandard shadcn configuration for source generation. Automatic shadcn installation requires `components.json` at the project root; otherwise install UI dependencies yourself and use `--skip-install`. See the [CLI reference](/docs/cli) for overwrite behavior and command options.

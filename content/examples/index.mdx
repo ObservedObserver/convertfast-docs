@@ -1,0 +1,35 @@
+---
+title: "Landing page examples and template previews"
+description: "Compare ConvertFast default and editorial templates, and read composition notes for developer tools, data applications, and deployment products."
+---
+
+# Examples and template previews
+
+ConvertFast UI includes two landing page templates, `default` and `editorial`. Each contains the same seven section types, with a different visual composition. Choose the one closest to the amount of content you need, then edit the generated source in your application.
+
+[Open the default template](/demo/default) or [open the editorial template](/demo/editorial). These previews contain sample copy, prices, company references, and testimonials. They demonstrate layout and interaction; they do not describe ConvertFast customers or paid plans.
+
+## Try both in your project
+
+After [initializing ConvertFast](/docs/installation), create separate routes so you can compare the templates without overwriting a page:
+
+```sh
+npx convertfast-ui@latest page create sample-default
+npx convertfast-ui@latest page create sample-editorial --template editorial
+```
+
+Open both routes at the widths your visitors use. Replace the sample heading and one feature description with your real content before choosing. A template that looks balanced with short placeholder text may need different spacing for your product explanation.
+
+## Composition notes
+
+The older version of this site included pages themed around other products. Their URLs remain available as design notes, with direct links to the current templates. They are not customer case studies or claims of endorsement.
+
+- [Graphic Walker example notes](/examples/graphic-walker) discuss how to explain an embeddable data interface.
+- [Lab2 example notes](/examples/lab2) discuss how to show the input, review, and output of a data application workflow.
+- [Zeabur example notes](/examples/zeabur) discuss deployment prerequisites and the destination of a primary action.
+
+## Adapt the structure
+
+A full generated page includes pricing and social proof, but your product may not need either. Remove a pricing grid when there is no purchase decision. Remove a testimonial section when you have no approved quotes. Add an installation link when evaluating the source is a more useful next step than creating an account.
+
+Use [individual blocks](/docs/cli#install-a-block) if the surrounding site already has a design. The [section guides](/docs/sections/hero-section) explain what each component is for and what to check before publishing. The final page should represent your product's actual capabilities and give visitors a working next step.

@@ -1,0 +1,30 @@
+---
+title: "Lab2 example notes"
+description: "Landing page composition notes for show a data application workflow. Adapt the current ConvertFast templates without implying a customer endorsement."
+---
+
+# Lab2 example notes
+
+The earlier Lab2-themed page explored a landing page for a data application workflow. Its historical URL is retained here as a set of composition notes. It is not evidence of a customer relationship, endorsement, or a currently available ConvertFast integration.
+
+## Show a data application workflow
+
+A workflow page should show what a person supplies and what they receive. For a data application, that might mean an input file, a review step, and a resulting view. Use product screenshots or a short worked example that makes those transitions visible.
+
+If the workflow includes AI assistance, describe what the user can review or change before accepting the result. A generated interface is different from verified analysis. The landing page should make that boundary understandable instead of treating every output as correct by default.
+
+## Choose sections around the decision
+
+Keep the hero focused on one job. Follow it with a concrete example and explain the requirements beside it. Questions about supported inputs, storage, exports, and account access belong in visible product content if they affect whether someone can try the workflow.
+
+Use a CTA that matches the available experience. A working sample, installation guide, or signup can each be appropriate. Do not label a link "Try it" when it only opens a contact form, and do not imply ConvertFast supplies the underlying AI service.
+
+## Build your own version
+
+Use the current [default template preview](/demo/default) or [editorial template preview](/demo/editorial) as a starting layout. The old product-specific mockup is not an installable template option. After [installation](/docs/installation), create an editable route:
+
+```sh
+npx convertfast-ui@latest page create product-example --template editorial
+```
+
+Replace all sample text, images, prices, and references. Review the generated source, remove sections that do not serve the product, and connect each action to a working destination. Test the complete route at mobile and desktop widths before publishing. The [coding agent workflow](/docs/skills) can help scope these edits without asking an assistant to invent product facts.

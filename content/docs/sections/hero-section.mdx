@@ -1,0 +1,44 @@
+---
+title: "Hero section for Next.js"
+description: "Introduce the product with a clear heading, supporting copy, and a primary action. Install or customize the ConvertFast hero block."
+---
+
+# Hero section
+
+The hero is the first section of a generated landing page. Use it to identify the product and the job it helps someone complete. A useful heading tells a visitor whether they are in the right place before asking them to click anything.
+
+For a developer tool, name the output and where it goes. A line such as "Generate editable landing pages in your Next.js project" gives more information than "Build the future faster." Use the supporting paragraph for requirements or scope that would make the heading too long.
+
+## Install this section
+
+```sh
+npx convertfast-ui@latest block add hero-section
+```
+
+Use `--template editorial` to select the editorial design. Both templates also include this section when you run `page create`. To replace it on a generated route after saving your edits:
+
+```sh
+npx convertfast-ui@latest page add marketing hero-section --template editorial --force
+```
+
+The replacement overwrites that section's source. A standalone block installs into your configured components directory; import its `HeroSection` export into your page. See [installation](/docs/installation) for prerequisites and the [CLI reference](/docs/cli) for file locations.
+
+## Customize the content
+
+Start with the main heading, supporting paragraph, button label, and button destination. Keep the page's primary heading here; if your application already renders one, adjust the generated heading hierarchy. Replace the sample visual with a screenshot that explains the actual workflow.
+
+The template's links are placeholders. A signup label should open signup, while a documentation label should open the relevant instructions. If both actions matter, give the primary one stronger emphasis and describe the secondary one accurately.
+
+## Preview the layout
+
+The preview below contains sample content. It demonstrates the default template separately from this documentation.
+
+import { DemoFrame } from '@/components/demo-frame'
+
+<DemoFrame template="default" section="hero-section" />
+
+[Open the editorial preview](/demo/editorial?section=hero-section) to compare the second layout.
+
+## Check before publishing
+
+Check the longest headline at phone width and with browser zoom. Make sure it wraps without clipping or covering the image. Read the page with images hidden; the heading and action should still explain the product. Confirm the image's alternative text describes useful information, or leave it empty for a decorative image.

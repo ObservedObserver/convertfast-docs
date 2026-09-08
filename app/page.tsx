@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({ title: 'ConvertFast UI — Next.js l
 export default function HomePage() {
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebSite', name: 'ConvertFast UI', url: SITE_URL },
-    { '@type': 'SoftwareApplication', name: 'ConvertFast UI', url: SITE_URL, description: SITE_DESCRIPTION, applicationCategory: 'DeveloperApplication', operatingSystem: 'Cross-platform', softwareVersion: '0.2.0', license: 'https://opensource.org/license/mit', codeRepository: 'https://github.com/ObservedObserver/convertfast-ui', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+    { '@type': 'SoftwareApplication', name: 'ConvertFast UI', url: SITE_URL, description: SITE_DESCRIPTION, applicationCategory: 'DeveloperApplication', operatingSystem: 'Cross-platform', softwareVersion: '0.2.1', license: 'https://opensource.org/license/mit', codeRepository: 'https://github.com/ObservedObserver/convertfast-ui', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
   ] };
   return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} /><MarketingHome /></>;
 }

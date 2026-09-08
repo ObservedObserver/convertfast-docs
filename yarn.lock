@@ -1690,10 +1690,10 @@ content-type@^2.1.0:
   resolved "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz#d9389c43c0a8cf6a355db464d21e07092a40493a"
   integrity sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==
 
-convertfast-ui@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/convertfast-ui/-/convertfast-ui-0.2.0.tgz#aaeb4caa5f1acb8a58560dfdc07e95e36458e430"
-  integrity sha512-TvyU0RqL5noLyqgn6ubQGfTHxL/AyJbpl9RMByzXXs2lq+wIl2otkNxWYfkPEETGpXHUK3G7dtsBndpFOTD1Rw==
+convertfast-ui@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/convertfast-ui/-/convertfast-ui-0.2.1.tgz#6f7ff916b47f549d21ddb872a00c7b022fc9cd32"
+  integrity sha512-wzUDS/eNv0V0mQf4x47DWUn14D9f/Wer+ceNgAmjnEzEOJ+MPDAli8q6whO5EyYrYsp8V2UjgqXiQCNbYjzcJg==
   dependencies:
     commander "^12.1.0"
     execa "^9.3.0"
@@ -4019,6 +4019,11 @@ react-aria@^3.48.0:
     clsx "^2.0.0"
     react-stately "3.50.0"
     use-sync-external-store "^1.6.0"
+
+react-colorful@^5.8.1:
+  version "5.8.1"
+  resolved "https://registry.npmjs.org/react-colorful/-/react-colorful-5.8.1.tgz#a6ef2a3946e6903883b142720dda80c72f24267f"
+  integrity sha512-oz68bhsnFWnpDf1ZR8daiQbYpXUnM2h2J6hl9Zg2rTpM/DU6vCqe1E+CpqmqLnJucMZetHZeifSAfJ+geN9lcA==
 
 react-compiler-runtime@^19.1.0-rc.2:
   version "19.1.0-rc.1-rc-af1b7da-20250421"

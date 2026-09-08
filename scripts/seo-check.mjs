@@ -56,7 +56,7 @@ try {
   for (const route of ['/not-a-real-convertfast-page', '/demo/missing', '/.local-docs/README.md']) assert.equal((await get(route)).status, 404, route);
   const manifest = await (await get('/r/registry.json')).json();
   assert.equal(manifest.homepage, SITE_URL);
-  assert.equal(manifest.items.length, 14);
+  assert.equal(manifest.items.length, 15);
   for (const item of manifest.items) {
     const response = await get(`/r/${item.name}.json`);
     assert.equal(response.status, 200);
@@ -79,7 +79,11 @@ try {
     assert.equal(response.headers.location, `${SITE_URL}/docs/cli?source=legacy&value=a%20b`);
   }
   report.status = 'passed';
-  console.log(`SEO check passed: ${report.pages.length} pages, 14 registry items, demo isolation, privacy, and redirects.`);
+  const colorPicker = await (await get('/shadcn-color-picker')).text();
+  assert.match(colorPicker, /A color picker/);
+  assert.match(colorPicker, /Live example/);
+  assert.match(colorPicker, /color-picker\.json/);
+  console.log(`SEO check passed: ${report.pages.length} pages, 15 registry items, color picker landing page, demo isolation, privacy, and redirects.`);
 } catch (error) {
   report.status = 'failed'; report.error = error.message;
   process.exitCode = 1; console.error(error);

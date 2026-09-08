@@ -4,7 +4,9 @@ import { getPageMap } from 'nextra/page-map'
 
 export default async function DocumentationLayout({ children }: { children: ReactNode }) {
   // Marketing and preview routes are outside the documentation navigation.
-  const pageMap = (await getPageMap()).filter((page) => !('route' in page) || (page.route !== '/' && !page.route.startsWith('/demo')))
+  const pageMap = (await getPageMap()).filter((page) => !('route' in page) || (
+    page.route !== '/' && page.route !== '/shadcn-color-picker' && !page.route.startsWith('/demo')
+  ))
   return (
     <Layout
       pageMap={pageMap}

@@ -11,7 +11,7 @@ yarn install --frozen-lockfile
 yarn dev
 ```
 
-MDX documentation lives in `content/`; product pages and metadata routes live in `app/`. Before development and production builds, `scripts/sync-release.mjs` copies the pinned, published `convertfast-ui@0.2.0` package into the generated demo and registry directories. Do not edit those generated copies.
+MDX documentation lives in `content/`; product pages and metadata routes live in `app/`. Before development and production builds, `scripts/sync-release.mjs` copies the pinned, published `convertfast-ui@0.2.1` package into the generated demo and registry directories. Do not edit those generated copies. Set `CONVERTFAST_PACKAGE_ROOT` to a local package directory when validating an unpublished release candidate.
 
 Nextra's bundled CSS and the legacy Tailwind 3 component styles use explicit cascade layers. The Zod resolution is pinned to 4.1.12 because newer Zod behavior breaks Nextra 4.6.1's layout validation. The xmldom resolution applies the patched 0.9.12 serializer while speech-rule-engine still pins 0.9.10. Verify the documentation layout and MathML speech output before changing these integrations.
 

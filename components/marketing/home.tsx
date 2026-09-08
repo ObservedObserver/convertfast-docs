@@ -33,7 +33,7 @@ export default function MarketingHome() {
               href="https://www.npmjs.com/package/convertfast-ui"
             >
               <span className={s.statusDot} />
-              v0.2.0 is here
+              v0.2.1 is here
               <span className={s.releaseDivider} />
               Next.js 14–16 <span aria-hidden="true">↗</span>
             </a>

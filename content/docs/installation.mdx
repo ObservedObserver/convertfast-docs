@@ -1,6 +1,6 @@
 ---
 title: "Install ConvertFast UI in a Next.js project"
-description: "Set up ConvertFast UI 0.2.0 with Next.js 14, 15, or 16, TypeScript, Tailwind CSS 3 or 4, and shadcn/ui."
+description: "Set up ConvertFast UI 0.2.1 with Next.js 14, 15, or 16, TypeScript, Tailwind CSS 3 or 4, and shadcn/ui."
 ---
 
 # Installation
@@ -44,6 +44,6 @@ npx convertfast-ui@latest page create launch --template editorial
 
 Initialization preserves an existing `landing-pages.json`. Re-run with `--force` only when you intend to replace that configuration, such as after moving the router.
 
-JSONC TypeScript configuration, inherited aliases, and custom `aliases.ui` and `aliases.utils` are supported. Aliases must resolve inside the application directory. Shared component packages outside it are unsupported in 0.2.0.
+JSONC TypeScript configuration, inherited aliases, and custom `aliases.ui` and `aliases.utils` are supported. Aliases must resolve inside the application directory. Shared component packages outside it are unsupported in 0.2.1.
 
 `--components path/to/components.json` selects a nonstandard shadcn configuration for source generation. Automatic shadcn installation requires `components.json` at the project root; otherwise install UI dependencies yourself and use `--skip-install`. See the [CLI reference](/docs/cli) for overwrite behavior and command options.

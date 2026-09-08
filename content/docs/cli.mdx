@@ -1,11 +1,11 @@
 ---
 title: "ConvertFast UI CLI reference"
-description: "Reference for init, page create, page add, and block add in ConvertFast UI 0.2.0, including templates, overwrite rules, and registry options."
+description: "Reference for init, page create, page add, and block add in ConvertFast UI 0.2.1, including templates, overwrite rules, and registry options."
 ---
 
 # CLI reference
 
-ConvertFast UI 0.2.0 provides initialization, page generation, and standalone block installation. Run commands from your Next.js application directory. Use `npx convertfast-ui@0.2.0` instead of `@latest` when you need a reproducible package version.
+ConvertFast UI 0.2.1 provides initialization, page generation, standalone block installation, and the color picker component. Run commands from your Next.js application directory. Use `npx convertfast-ui@0.2.1` instead of `@latest` when you need a reproducible package version.
 
 ## Initialize a project
 
@@ -47,9 +47,10 @@ For a custom page, place this marker where sections should be inserted:
 ```sh
 npx convertfast-ui@latest block add hero-section
 npx convertfast-ui@latest block add faq --template editorial
+npx convertfast-ui@latest block add color-picker
 ```
 
-Blocks install into your configured components directory. Import the installed component into your own page. Definitions come from registry JSON bundled in the npm package, so no ConvertFast registry server or namespace setup is required. The installer uses shadcn CLI 4.21.0 and downloads missing dependencies.
+Blocks and standalone components install into your configured components directory. Import the installed component into your own page. Definitions come from registry JSON bundled in the npm package, so no ConvertFast registry server or namespace setup is required. The installer uses shadcn CLI 4.21.0 and downloads missing dependencies. See the [color picker demo and API](/shadcn-color-picker) for a complete example.
 
 `--force` replaces an existing bundled block. Existing public assets and shared UI components are preserved. With an explicitly configured remote `--namespace`, overwrite behavior follows shadcn and can include dependencies and assets.
 
